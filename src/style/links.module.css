@@ -1,0 +1,23 @@
+.links_container{
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+}
+.link{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    background: #dabab4;
+}
+.link h1{
+    text-align: center;
+}
+.arrow{
+    width: auto;
+    height: 7vw;
+    margin: 0 0 0 5%;
+    transition: transform 1.25s ease;
+}
