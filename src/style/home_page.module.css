@@ -1,36 +1,6 @@
 
 /*                   intro                          */
 
-.introduction{
-    position: relative;
-    width: 100%;
-    height: 125vw;
-}
-.homeImg{
-    width: 100%;
-    height: 100%;
-}
-.intro_header{
-    position: absolute;
-    width: 100vw;
-    height: 50vh;
-    top: 15vh;
-}
-.intro_text{
-    position: absolute;
-    bottom: 0;
-    max-width: 350px;
-    text-align: center;
-    left: 50%;
-    transform: translate(-50%);
-    margin: auto auto 30px;
-    font-weight: 500;
-
-}
-.h_container{
-    text-align: center;
-    margin: 0;
-}
 
 
 
@@ -45,26 +15,129 @@
 .internal_page_links{
     position: relative;
     width: 100%;
+    height: 100vh;
+
 }
 
 .links_wrapper {
+    max-width: 1700px;
     position: relative;
     padding: 30px;
     z-index: 900;
+    margin: 0 auto;
 }
 
 
-.ccc{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    background: #035a5a;
-    z-index: 0;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
+
+
+
+
+
+.video_section{
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background: var(--color2);
+}
+.video_wrapper{
+    position: relative;
+    max-width: 1800px;
+    display: flex;
+    justify-content: center;
+}
+.video_container{
+    position: relative;
+    height: 80vh;
+    width: 30vw;
+    overflow: hidden;
+}
+
+
+
+
+.specialising{
+    position: relative;
+    width: 100vw;
+}
+.specialising p{
+    text-align: center;
+    padding: 30px;
+}
+.specialising_header{
+    position: relative;
+    width: 100%;
+    font-size: 6vw;
+}
+
+
+
+
+
+.carousel{
+    position: relative;
+    width: 100vw;
+}
+.carousel_top{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px 60px 30px;
+}
+.text_right{
+    text-align: right;
+}
+
+.swiper_container{
+    position: relative;
+    width: 100vw;
+}
+.swiper{
+    width: 100%;
+}
+
+.carouselImg_container{
+    width: 550px;
+    height: 700px;
+    margin: 0;
+
+}
+.carouselImg_container_small{
+    height: 550px;
+    margin: 100px 0;}
+
+
+.carouselImg{
+    height: 100%;
+    width: 100%;
     user-select: none;
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.banner{
+
+}
+
+
+.colophon{
+    height: 65vh;
+}
+
+.hg{
+    height: 100vh;
 }
 
 

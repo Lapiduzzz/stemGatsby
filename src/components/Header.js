@@ -3,12 +3,13 @@ import * as header  from "../style/header.module.css"
 import * as style from '../style/style.module.css'
 import {Link} from "gatsby";
 
-const Header = ({title}) => {
+const Header = ({title, setMenuDisplay}) => {
+
     return (
         <div className={header.header}>
             <div className={header.header_inner}>
                 <div className={`${header.menu_icon} + ${header.header_inner_container}`}>
-                    <div className={header.menu_icon_container}>
+                    <div className={header.menu_icon_container} onClick={()=> setMenuDisplay(prev => !prev)}>
                         <span className={`${header.line} + ${header.line_top}`}></span>
                         <span className={header.line}></span>
                         <span className={header.line}></span>

@@ -1,7 +1,6 @@
 .links_container{
     position: relative;
     width: 100%;
-    max-width: 1600px;
     margin: auto;
 }
 .link{
@@ -10,14 +9,18 @@
     display: flex;
     align-items: center;
     margin: 0;
-    background: #dabab4;
+    overflow: hidden;
 }
 .link h1{
     text-align: center;
+    margin: 0 0 0 30px;
+}
+.arrow_container{
+    overflow: hidden;
 }
 .arrow{
     width: auto;
     height: 7vw;
-    margin: 0 0 0 5%;
+    margin: 0 0 0 70px;
     transition: transform 1.25s ease;
 }

@@ -32,7 +32,9 @@ a{
 }
 
 .wrapper{
-    position: relative;
+    position: absolute;
+    top:0;
+    left:0;
     width: 100%;
     height: fit-content;
 }
@@ -42,7 +44,7 @@ a{
 .link::before{
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 0;
     width: 100%;
     height: 1px;
@@ -52,7 +54,7 @@ a{
 .link::after{
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 0;
     width: 0;
     height: 1px;
@@ -63,7 +65,7 @@ a{
     width: 100%;
 }
 
-.h1{
+.h1, .h2{
     font-family: "Silk Serif";
     font-style: italic;
     font-size: 10vw;
@@ -74,7 +76,14 @@ a{
     text-transform: uppercase;
     color: var(--color1);
 }
+.h2{
+    font-size: 6vw;
+}
+p{
+    text-transform: uppercase;
+    font-weight: 500;
 
+}
 .start{
     justify-content: flex-start;
 }
@@ -89,13 +98,63 @@ a{
     position: relative;
     height: 200px;
     background: var(--color2);
-}
-
-video{
-    height: 70vh;
-    width: auto;
+    z-index: 0;
 }
 
 
+.video video{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+.floating_cursor{
+    position: fixed;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    pointer-events: none;
+}
+.cursor_data{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 0;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+}
+.cursor_arrows{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 135px;
+    height: 135px;
+    opacity: 0;
+}
+.cursor_left, .cursor_right{
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(0,-50%);
+    background-image: url("../images/arrow_small.svg");
+    background-size: contain;
+    background-position: center;
+}
+.cursor_left{
+    left: 25px;
+}
+.cursor_right{
+    right: 20px;
+    transform: translate(-50%,-50%) rotate(180deg);
+}
 
 

@@ -1,0 +1,19 @@
+.menu_container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color2);
+    transition: all 1s ease;
+}
+.menu{
+    width: 40%;
+}
+.link_container{
+    margin: 20px 0;
+}

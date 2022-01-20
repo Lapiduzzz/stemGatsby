@@ -1,0 +1,29 @@
+.introduction{
+    position: relative;
+    width: 100%;
+    height: 125vw;
+}
+.backgroundImg{
+    width: 100%;
+    height: 100%;
+}
+.header{
+    position: absolute;
+    width: 100vw;
+    height: 50vh;
+    top: 15vh;
+}
+.text{
+    position: absolute;
+    bottom: 0;
+    max-width: 350px;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%);
+    margin: auto auto 30px;
+}
+.h_container{
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+}
