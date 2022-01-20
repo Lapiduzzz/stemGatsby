@@ -5,7 +5,7 @@ import '../fonts/SilkSerif/stylesheet.css'
 
 const IndexPage = () => {
     return (
-        <Layout title={'home'}>
+        <Layout title={'contact'}>
         </Layout>
     )
 }
