@@ -23,6 +23,9 @@ import 'swiper/swiper.min.css'
 
 const IndexPage = ({data}) => {
 
+    let frontmatter = data.mdx.frontmatter
+
+
     const [menuDisplay, setMenuDisplay] = useState(false)
     const [whichCard, setWhichCard] = useState('APPROACH')
     const [cursorData, setCursorData] = useState(null)
@@ -32,7 +35,6 @@ const IndexPage = ({data}) => {
     const [swiperHover, setSwiperHover] = useState(false)
 
 
-    const frontmatter = data.mdx.frontmatter
     const sliderCard1 = getImage(frontmatter.sliderCard1)
     const sliderCard2 = getImage(frontmatter.sliderCard2)
     const sliderCard3 = getImage(frontmatter.sliderCard3)
