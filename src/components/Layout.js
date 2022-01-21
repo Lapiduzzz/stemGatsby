@@ -20,16 +20,9 @@ const Layout = ({   title, children, whichCard,
 
 
     gsap.registerPlugin(ScrollTrigger)
-    let locoScroll = new LocomotiveScroll({
-
-        }
-    )
-
-
-
 
     useEffect(() => {
-        locoScroll = new LocomotiveScroll({
+        let locoScroll = new LocomotiveScroll({
                 el: scrollContainerRef.current,
                 smooth: true,
             }
@@ -71,7 +64,7 @@ const Layout = ({   title, children, whichCard,
                 <main data-scroll-section>
                         {children}
                     </main>
-                <Footer loco={locoScroll} gsapFade={gsapFade} />
+                <Footer  gsapFade={gsapFade} />
             </div>
     )
 }
