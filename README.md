@@ -56,3 +56,4 @@ Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cl
 
 
 https://build-a4fa52fe-8269-4984-9757-5821f4517a10.gtsb.io/
+https://keen-shockley-cffdb0.netlify.app
