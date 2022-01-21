@@ -32,11 +32,10 @@ const IndexPage = ({data}) => {
     const [swiperHover, setSwiperHover] = useState(false)
 
 
-    const frontmatter = data.mdx.frontmatter
-    const sliderCard1 = getImage(frontmatter.sliderCard1)
-    const sliderCard2 = getImage(frontmatter.sliderCard2)
-    const sliderCard3 = getImage(frontmatter.sliderCard3)
-    const sliderCard4 = getImage(frontmatter.sliderCard4)
+    const sliderCard1 = getImage(data.mdx.frontmatter.sliderCard1)
+    const sliderCard2 = getImage(data.mdx.frontmatter.sliderCard2)
+    const sliderCard3 = getImage(data.mdx.frontmatter.sliderCard3)
+    const sliderCard4 = getImage(data.mdx.frontmatter.sliderCard4)
 
     const scrollContainerRef = useRef(null)
 
@@ -211,7 +210,7 @@ const IndexPage = ({data}) => {
 
 
     return (
-        <Layout title={frontmatter.head}
+        <Layout title={data.mdx.frontmatter.head}
                 whichCard={whichCard}
                 setWhichCard={setWhichCard}
                 cursorData={cursorData}
@@ -229,7 +228,7 @@ const IndexPage = ({data}) => {
 
 
             <Introduction backgroundImg={data.mdx.frontmatter.backgroundImg}
-                          alt={frontmatter.backgroundImgAlt}
+                          alt={data.mdx.frontmatter.backgroundImgAlt}
                           hStr1={'Embrace'}
                           hStr2={'A new'}
                           hStr3={'Reality'}
@@ -259,13 +258,13 @@ const IndexPage = ({data}) => {
             <section className={home.video_section}>
                 <div className={home.video_wrapper} ref={videoRef}>
                     <div className={home.video_container}>
-                        <Video videoSrcURL={frontmatter.video}/>
+                        <Video videoSrcURL={data.mdx.frontmatter.video}/>
                     </div>
                     <div className={home.video_container}>
-                        <Video videoSrcURL={frontmatter.video}/>
+                        <Video videoSrcURL={data.mdx.frontmatter.video}/>
                     </div>
                     <div className={home.video_container}>
-                        <Video videoSrcURL={frontmatter.video}/>
+                        <Video videoSrcURL={data.mdx.frontmatter.video}/>
                     </div>
                 </div>
             </section>
