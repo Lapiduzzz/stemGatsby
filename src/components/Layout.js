@@ -21,6 +21,38 @@ const Layout = ({   title, children, whichCard,
 
     gsap.registerPlugin(ScrollTrigger)
 
+    useEffect(() => {
+        let locoScroll = new LocomotiveScroll({
+                el: scrollContainerRef.current,
+                smooth: true,
+            }
+        )
+        locoScroll.scrollTo( 'top', {
+            'offset': 0,
+            'callback': function() {
+                // do something...
+            },
+            'duration': 600,
+            'easing': [0.25, 0.00, 0.35, 1.00],
+            'disableLerp': true
+        } );
+
+        locoScroll.on("scroll", ScrollTrigger.update);
+
+        ScrollTrigger.scrollerProxy(scrollContainerRef.current, {
+            scrollTop(value) {
+                return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+            },
+            getBoundingClientRect() {
+                return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+            },
+            pinType: scrollContainerRef.current.style.transform ? "transform" : "fixed"
+        });
+
+        ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+        ScrollTrigger.refresh();
+
+    }, [ScrollTrigger])
 
 
 
