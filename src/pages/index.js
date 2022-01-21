@@ -382,7 +382,7 @@ const IndexPage = ({data}) => {
 
 export const query = graphql`
     query {
-        mdx(id: {eq: "0539a7e1-77f8-5b7a-ad26-3b729d33ab11"}) {
+        mdx(frontmatter: {path: {eq: "./src/markdown/home"}}) {
             frontmatter {
                 title
                 video
