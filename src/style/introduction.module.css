@@ -23,12 +23,11 @@
     margin: auto auto 30px;
 }
 .h_container{
-    background: #767676;
-    height: fit-content;
+    height: 8vw;
     text-align: center;
     margin: 0;
     overflow: hidden;
 }
 .h2_container{
-    height: fit-content;
+     height: 6vw;
 }
