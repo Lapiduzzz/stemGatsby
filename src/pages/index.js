@@ -138,15 +138,18 @@ const IndexPage = ({data}) => {
     }
 
     const gsapTxt = (target, trigger, delay) => {
-        gsap.from(target, {
-            duration: 1.5, ease: "power2.out", yPercent: 150, skewY: 5, delay: delay,
+        gsap.fromTo(target, {
+            duration: 1.5, ease: "power2.out", yPercent: 150, skewY: 5,
+        },
+        {duration: 1.5, ease: "power2.out", yPercent: 0, skewY: 0, delay: delay,
             scrollTrigger: {
                 trigger: trigger,
                 scroller: scrollContainerRef.current,
                 start: 'top center',
                 end: 'bottom bottom',
             }
-        })
+        }
+        )
     }
 
     const gsapFade = (target, trigger, delay, start) => {
