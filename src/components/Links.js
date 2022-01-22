@@ -24,7 +24,7 @@ const Links = ({title, fontSize, position, setWhichCard, arrowSize, linkRef, arr
 
     return(
         <Link to={`/${title}`}>
-            <div className={links.links_container} data-scroll
+            <div className={links.links_container } style={{height: `${fontSize}`}} data-scroll
                  onMouseEnter={e => linkOver(e)}
                  onMouseLeave={e => linkLeave(e)}>
                     <div className={`${links.link} + ${position}`}>

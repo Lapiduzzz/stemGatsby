@@ -275,7 +275,7 @@ const IndexPage = ({data}) => {
             <section className={home.specialising} data-scrol-section ref={section2Ref}>
                 <p ref={p2Ref}>specialising in</p>
                 <div className={home.specialising_header} data-scroll>
-                    <div className={intro.h_container}>
+                    <div className={`${intro.h_container} + ${intro.h2_container}`}>
                         <h2 className={style.h2} ref={link2Ref1}>WEDDINGS</h2>
                     </div>
                     <div className={intro.h_container}>

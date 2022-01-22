@@ -37,8 +37,8 @@ const FloatingCursor = ({cursorData, isSectionHover, cursorArrowsDisplay, swiper
             duration: 1,
             css: isSectionHover === false &&
                  {
-                    strokeDasharray: '0 1000',
-                    strokeDashoffset: '1000',
+                     strokeDasharray: '0 1000',
+                     strokeDashoffset: '1000',
                 }
         })
         gsap.to(cursorDataRef.current, {duration: 0.5, css: isSectionHover ? {opacity: '1'} : {opacity: '0'}})
