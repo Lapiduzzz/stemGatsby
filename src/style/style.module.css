@@ -72,7 +72,7 @@ a{
     line-height: .8;
     letter-spacing: .5vw;
     font-weight: 200;
-    margin: 0;
+    margin: 15px 0 0 0;
     text-transform: uppercase;
     color: var(--color1);
 }
