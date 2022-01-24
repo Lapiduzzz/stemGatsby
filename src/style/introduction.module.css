@@ -25,6 +25,7 @@
 .h_container{
     text-align: center;
     margin: 0;
+    height: 8vw;
     overflow: hidden;
 }
 .h2_container{
