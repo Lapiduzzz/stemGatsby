@@ -123,9 +123,8 @@ const IndexPage = ({data}) => {
 
     ]
 
-    console.log(window.innerWidth)
 
-    const fontSize = window.innerWidth >= 2000 ? '180px' : '10vw'
+    let fontSize = 0
 
 
     const linkSectionOver = (dataCursor, cardDisplay, arrowDisplay) => {
@@ -220,6 +219,14 @@ const IndexPage = ({data}) => {
             })
 
     }, [])
+
+    useEffect(()=>{
+        if(typeof window !== 'undefined'){
+            window.addEventListener('resize',()=>{
+                fontSize = window.innerWidth >= 2000 ? '180px' : '10vw'
+            })
+        }
+    },[window])
 
 
     return (
