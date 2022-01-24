@@ -20,11 +20,12 @@
 }
 
 .links_wrapper {
-    max-width: 1700px;
+    max-width: 1600px;
     position: relative;
     padding: 30px;
     z-index: 900;
     margin: 0 auto;
+    white-space: nowrap;
 }
 
 

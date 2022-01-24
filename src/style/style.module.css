@@ -167,4 +167,11 @@ p{
     }
 }
 
+@media all and (min-width: 2000px) {
+    .h1, .h2 {
+        font-size: 180px
+    }
+}
+
+
 

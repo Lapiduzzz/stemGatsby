@@ -20,6 +20,7 @@
 }
 .arrow{
     width: auto;
+    height: 7vw;
     margin: 0 0 0 70px;
     transition: transform 1.25s ease;
 }

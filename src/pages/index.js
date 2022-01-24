@@ -81,6 +81,8 @@ const IndexPage = ({data}) => {
 
 
 
+
+
     const links = [
         {
             title: 'approach',
@@ -120,6 +122,11 @@ const IndexPage = ({data}) => {
         },
 
     ]
+
+    console.log(window.innerWidth)
+
+    const fontSize = window.innerWidth >= 2000 ? '180px' : '10vw'
+
 
     const linkSectionOver = (dataCursor, cardDisplay, arrowDisplay) => {
         if (isSectionHover === false) {
@@ -372,8 +379,8 @@ const IndexPage = ({data}) => {
                                 ref={banerRef3}
                             >mood?</h1>
                         </div>
-                            <Links title={'let\'s chat'} fontSize={"10vw"} position={style.start}
-                                   setWhichCard={setWhichCard} linkRef={banerRef4} arrRef={banerArrRef}/>
+                            <Links title={'let\'s chat'} fontSize={fontSize} position={style.start}
+                                   setWhichCard={setWhichCard} linkRef={banerRef4} arrRef={banerArrRef} arrowSize={fontSize}/>
                     </Link>
                 </div>
             </section>
