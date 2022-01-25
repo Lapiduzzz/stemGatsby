@@ -17,10 +17,10 @@
 }
 .arrow_container{
     overflow: hidden;
+    width: fit-content;
+    margin: 0 0 0 70px;
 }
 .arrow{
     width: auto;
     height: 7vw;
-    margin: 0 0 0 70px;
-    transition: transform 1.25s ease;
 }

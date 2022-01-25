@@ -123,10 +123,6 @@ const IndexPage = ({data}) => {
 
     ]
 
-
-    let fontSize = 0
-
-
     const linkSectionOver = (dataCursor, cardDisplay, arrowDisplay) => {
         if (isSectionHover === false) {
             setCursorData(dataCursor)
@@ -160,7 +156,7 @@ const IndexPage = ({data}) => {
 
     const gsapFade = (target, trigger, delay, start) => {
         gsap.from(target, {
-            duration: 1.5, opacity: 0, ease: "power2.out", delay: delay,
+            duration: 1.25, opacity: 0, ease: "power2.out", delay: delay,
             scrollTrigger: {
                 trigger: trigger,
                 scroller: scrollContainerRef.current,
@@ -169,6 +165,22 @@ const IndexPage = ({data}) => {
             }
         })
     }
+
+    const arrMove = (target, trigger) => {
+        gsap.from(target, {duration: 1.25, ease: "power2.out", translateX: '-100%', delay: 1.25,
+            scrollTrigger: {
+                trigger: trigger,
+                scroller: scrollContainerRef.current,
+                start: 'top center',
+                end: 'bottom bottom',
+            }
+        }
+)
+
+
+
+    }
+
 
     gsap.registerPlugin(ScrollTrigger)
 
@@ -197,36 +209,18 @@ const IndexPage = ({data}) => {
         gsapTxt(banerRef3.current, banerRef.current, 0.4,)
         gsapTxt(banerRef4.current, banerRef.current, 0.6,)
 
+        arrMove([
+            arrRef1.current,
+            arrRef2.current,
+            arrRef3.current,
+            arrRef4.current,
+            arrRef5.current,
+            arrRef6.current,
+        ],LinkSection.current )
+        arrMove(banerArrRef.current, banerRef.current)
 
-        gsap.fromTo([
-                arrRef1.current,
-                arrRef2.current,
-                arrRef3.current,
-                arrRef4.current,
-                arrRef5.current,
-                arrRef6.current,
-                banerArrRef.current,
-            ],
-            {duration: 1.5, ease: "power2.out", translateX: -320},
-            {
-                duration: 1.5, ease: "power2.out", translateX: 0, delay: 0.5,
-                scrollTrigger: {
-                    trigger: LinkSection.current,
-                    scroller: scrollContainerRef.current,
-                    start: 'top center',
-                    end: 'bottom bottom',
-                }
-            })
 
     }, [])
-
-    useEffect(()=>{
-        if(typeof window !== 'undefined'){
-            window.addEventListener('resize',()=>{
-                fontSize = window.innerWidth >= 2000 ? '180px' : '10vw'
-            })
-        }
-    },[window])
 
 
     return (
@@ -270,6 +264,7 @@ const IndexPage = ({data}) => {
                                                setWhichCard={setWhichCard}
                                                linkRef={link.linkRef}
                                                arrRef={link.arrRef}
+                                               arrowSize={'7vw'}
                         />)
                     )}
                 </div>
@@ -370,24 +365,24 @@ const IndexPage = ({data}) => {
                     <Link to={'/contact'}>
                         <div className={`${l.link} + ${style.start}`}>
                             <h1 className={`${style.h1} + ${home.banner_h1}`}
-                                style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px'}}
+                                style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', lineHeight: '.85'}}
                                 ref={banerRef1}
                             >ready to</h1>
                         </div>
                         <div className={`${l.link} + ${style.end}`}>
                             <h1 className={`${style.h1}  + ${home.banner_h1}`}
-                                style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px'}}
+                                style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', lineHeight: '.85'}}
                                 ref={banerRef2}
                             >create your</h1>
                         </div>
                         <div className={`${l.link} + ${style.end}`}>
                             <h1 className={`${style.h1} + ${home.banner_h1}`}
-                                style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', marginBottom: '20px'}}
+                                style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', marginBottom: '20px', lineHeight: '.85'}}
                                 ref={banerRef3}
                             >mood?</h1>
                         </div>
-                            <Links title={'let\'s chat'} fontSize={fontSize} position={style.start}
-                                   setWhichCard={setWhichCard} linkRef={banerRef4} arrRef={banerArrRef} arrowSize={fontSize}/>
+                            <Links title={'let\'s chat'} fontSize={'10vw'} position={style.start}
+                                   setWhichCard={setWhichCard} linkRef={banerRef4} arrRef={banerArrRef} arrowSize={'7vw'}/>
                     </Link>
                 </div>
             </section>

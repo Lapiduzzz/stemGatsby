@@ -25,6 +25,15 @@ const Layout = ({   title, children, whichCard,
         let locoScroll = new LocomotiveScroll({
                 el: scrollContainerRef.current,
                 smooth: true,
+                mobile: {
+                    smooth: true
+                },
+                tablet: {
+                    smooth: true
+                },
+                smartphone: {
+                    smooth: true
+                },
             }
         )
         locoScroll.scrollTo( 'top', {
