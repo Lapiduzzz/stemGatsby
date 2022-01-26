@@ -75,6 +75,8 @@ a{
     margin:  0;
     text-transform: uppercase;
     color: var(--color1);
+    display: inline-block;
+    vertical-align: middle;
 }
 .h2{
     font-size: 6vw;
