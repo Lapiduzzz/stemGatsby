@@ -6,7 +6,6 @@ import * as l from '../style/links.module.css'
 import 'normalize.css'
 import Layout from "../components/Layout";
 import {GatsbyImage, getImage, StaticImage} from "gatsby-plugin-image";
-import '../fonts/SilkSerif/stylesheet.css'
 import Links from "../components/Links";
 import Spacer from "../components/Spacer";
 import {useEffect, useRef, useState} from "react";
