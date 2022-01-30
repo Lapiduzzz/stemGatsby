@@ -42,5 +42,19 @@ module.exports = {
       },
       __key: "markdown",
     },
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.API_URL || "http://localhost:1337",
+        collectionTypes: [
+          {
+            name: `image-cards`,
+            endpoint: `api/image-cards`,
+          },
+        ],
+        singleTypes: [],
+        queryLimit: 1000,
+      },
+    },
   ],
 };
