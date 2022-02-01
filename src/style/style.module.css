@@ -12,10 +12,11 @@ body, html {
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "calt" 1;
-    --color1: #ffffe7;
-    --color2: #dabab4;
-    --color3: #ffffe7;
-    --color4: #ffffe7;
+    --color1: #F2D6BD;
+    --color2: #A65A53;
+    --color3: #F28D77;
+    --color4: #7D658C;
+    --color5: #D98BA7;
     color: var(--color1);
     background: var(--color2);
 }
@@ -50,7 +51,7 @@ a{
     left: 0;
     width: 100%;
     height: 1px;
-    background: #ffffe7;
+    background: var(--color1);
     opacity: .2;
 }
 .link::after{
@@ -60,7 +61,7 @@ a{
     left: 0;
     width: 0;
     height: 1px;
-    background: #ffffe7;
+    background: var(--color1);
     transition: width 0.75s ease;
 }
 .link:hover::after{

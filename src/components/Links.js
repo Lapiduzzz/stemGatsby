@@ -51,9 +51,9 @@ const Links = ({title, fontSize, position, setWhichCard, arrowSize, linkRef, arr
                                  ref={arrRef}
                                  className={links.arrow}
                                  style={{ height: `${arrowSize}`}}>
-                                <path d="M167.641 54.5L0.000359535 54.5" stroke="#FFFFE7" stroke-miterlimit="10"/>
-                                <path d="M113.565 109C113.565 79.0915 137.965 54.5 167.641 54.5" stroke="#FFFFE7" stroke-width="5" stroke-miterlimit="10"/>
-                                <path d="M167.641 54.5C137.965 54.5 113.565 29.9085 113.565 -1.47803e-06" stroke="#FFFFE7" stroke-width="5" stroke-miterlimit="10"/>
+                                <path d="M167.641 54.5L0.000359535 54.5" stroke="#D9C8A9" stroke-miterlimit="10"/>
+                                <path d="M113.565 109C113.565 79.0915 137.965 54.5 167.641 54.5" stroke="#D9C8A9" stroke-width="5" stroke-miterlimit="10"/>
+                                <path d="M167.641 54.5C137.965 54.5 113.565 29.9085 113.565 -1.47803e-06" stroke="#D9C8A9" stroke-width="5" stroke-miterlimit="10"/>
                             </svg>
                         </div>
                     </div>

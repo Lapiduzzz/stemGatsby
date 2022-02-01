@@ -2,12 +2,12 @@ import * as React from "react"
 import * as image from "../style/image_card.module.css"
 import {useEffect, useRef} from "react";
 import {gsap} from "gsap";
-import imageCard1 from '/src/images/imageCard/ImageCard1.webp'
-import imageCard2 from '/src/images/imageCard/ImageCard2.webp'
-import imageCard3 from '/src/images/imageCard/ImageCard3.webp'
-import imageCard4 from '/src/images/imageCard/ImageCard4.webp'
-import imageCard5 from '/src/images/imageCard/ImageCard5.webp'
-import imageCard6 from '/src/images/imageCard/ImageCard6.webp'
+import imageCard1 from '/src/images/imageCard/ImageCard1.jpg'
+import imageCard2 from '/src/images/imageCard/ImageCard2.jpg'
+import imageCard3 from '/src/images/imageCard/ImageCard3.jpg'
+import imageCard4 from '/src/images/imageCard/ImageCard4.jpg'
+import imageCard5 from '/src/images/imageCard/ImageCard5.jpg'
+import imageCard6 from '/src/images/imageCard/ImageCard6.jpg'
 
 
 

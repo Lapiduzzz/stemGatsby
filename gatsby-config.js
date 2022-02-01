@@ -11,7 +11,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        icon: "src/images/iconFlower.png",
       },
     },
     "gatsby-plugin-mdx",
@@ -42,7 +42,7 @@ module.exports = {
       },
       __key: "markdown",
     },
-    {
+    /*{
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.API_URL || "http://localhost:1337",
@@ -55,6 +55,6 @@ module.exports = {
         singleTypes: [],
         queryLimit: 1000,
       },
-    },
+    },*/
   ],
 };
