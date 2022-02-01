@@ -119,7 +119,6 @@ const IndexPage = ({data}) => {
             linkRef: linkRef6,
             arrRef: arrRef6,
         },
-
     ]
 
     const linkSectionOver = (dataCursor, cardDisplay, arrowDisplay) => {
