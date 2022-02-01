@@ -25,22 +25,6 @@ const FloatingCursor = ({cursorData, isSectionHover, cursorArrowsDisplay, swiper
 
     useEffect(()=>{
 
-        gsap.to(circleRef.current, {
-            duration: 2,
-            css: isSectionHover === true &&
-                {
-                    strokeDasharray: '1000 0',
-                    strokeDashoffset: '1000',
-                }
-        })
-        gsap.to(circleRef.current, {
-            duration: 1,
-            css: isSectionHover === false &&
-                 {
-                     strokeDasharray: '0 1000',
-                     strokeDashoffset: '1000',
-                }
-        })
         gsap.to(cursorDataRef.current, {duration: 0.5, css: isSectionHover ? {opacity: '1'} : {opacity: '0'}})
 
     },[isSectionHover])
@@ -68,7 +52,12 @@ const FloatingCursor = ({cursorData, isSectionHover, cursorArrowsDisplay, swiper
     return (
         <div className={style.floating_cursor} ref={cursorRef}>
             <svg width="135" height="135" x="0px" y="0px" viewBox="0 0 135 135" fill="none">
-                <circle cx="65" cy="65" r="65" stroke="#FFFFE7" ref={circleRef}/>
+                <circle cx="65" cy="65" r="65" stroke="#FFFFE7" ref={circleRef} className={style.circle}
+                        style={isSectionHover
+                            ? {strokeDasharray: '1000 0', strokeDashoffset: '1000'}
+                            : {strokeDasharray: '0 1000', strokeDashoffset: '1000'}
+                        }
+                />
             </svg>
             <div className={style.cursor_arrows} ref={cursorArrowsRef} >
                 <div className={style.cursor_left} ref={rightArrRef}/>

@@ -124,6 +124,9 @@ p{
     user-select: none;
     pointer-events: none;
 }
+.circle{
+    transition: all 0.5s ease !important;
+}
 .cursor_data{
     position: absolute;
     top: 50%;
@@ -161,6 +164,7 @@ p{
     right: 20px;
     transform: translate(-50%,-50%) rotate(180deg);
 }
+
 
 
 
