@@ -2,12 +2,15 @@ import * as React from "react"
 import * as intro from "../style/introduction.module.css"
 import * as style from "../style/style.module.css"
 import {GatsbyImage, getImage} from "gatsby-plugin-image";
-import {gsap} from "gsap";
 import {useEffect, useRef} from "react";
+import {useAnimationContext} from "../context/AnimationContext";
 
 
 
-const Introduction = ({backgroundImg, alt, bottomText, hStr1, hStr2, hStr3, gsapFade, gsapTxt}) => {
+const Introduction = ({backgroundImg, alt, bottomText, hStr1, hStr2, hStr3,}) => {
+
+    const {gsapTxt, gsapFade} = useAnimationContext()
+
     const image = getImage(backgroundImg)
 
     const introRef = useRef()
@@ -21,7 +24,7 @@ const Introduction = ({backgroundImg, alt, bottomText, hStr1, hStr2, hStr3, gsap
         gsapTxt(hRef1.current, introRef.current, 0)
         gsapTxt(hRef2.current, introRef.current, 0.2)
         gsapTxt(hRef3.current, introRef.current, 0.4)
-        gsapFade(pRef.current, pRef.current, 0.2, 'bottom bottom')
+        gsapFade(pRef.current, introRef.current, 0.2, 'bottom bottom')
     },[])
 
     return (

@@ -3,7 +3,6 @@
     z-index: 0;
     user-select: none;
     pointer-events: none;
-    transition: all 0.5s ease;
 }
 .image_container{
     width: 350px;

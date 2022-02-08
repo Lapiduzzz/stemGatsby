@@ -2,8 +2,11 @@ import * as React from "react"
 import * as style from "../style/style.module.css";
 import {useEffect, useRef} from "react";
 import {gsap} from "gsap";
+import {useFloatingCursor} from "../context/FloatingCursorContext";
 
-const FloatingCursor = ({cursorData, isSectionHover, cursorArrowsDisplay, swiperHover}) =>{
+const FloatingCursor = () =>{
+
+    const {isSectionHover, cursorData, cursorArrowsDisplay, swiperHover} = useFloatingCursor().state
 
     const cursorRef = useRef(null)
     const cursorArrowsRef = useRef(null)
@@ -25,6 +28,16 @@ const FloatingCursor = ({cursorData, isSectionHover, cursorArrowsDisplay, swiper
 
     useEffect(()=>{
 
+        isSectionHover
+            ? gsap.to(circleRef.current, {
+                duration: 2,
+                css: {strokeDasharray: '1000 0',}
+            })
+            : gsap.to(circleRef.current, {
+                duration: 1,
+                css: {strokeDasharray: '0 1000',}
+            })
+
         gsap.to(cursorDataRef.current, {duration: 0.5, css: isSectionHover ? {opacity: '1'} : {opacity: '0'}})
 
     },[isSectionHover])
@@ -43,6 +56,7 @@ const FloatingCursor = ({cursorData, isSectionHover, cursorArrowsDisplay, swiper
 
     },[swiperHover])
     useEffect(()=>{
+
         gsap.set('.floating_cursor',{xPercent:-50,yPercent:-50})
         window.addEventListener("mousemove", (e)=>{
             gsap.to(cursorRef.current,.75,{x:e.clientX,y:e.clientY});
@@ -52,12 +66,7 @@ const FloatingCursor = ({cursorData, isSectionHover, cursorArrowsDisplay, swiper
     return (
         <div className={style.floating_cursor} ref={cursorRef}>
             <svg width="135" height="135" x="0px" y="0px" viewBox="0 0 135 135" fill="none">
-                <circle cx="65" cy="65" r="65" stroke="#FFFFE7" ref={circleRef} className={style.circle}
-                        style={isSectionHover
-                            ? {strokeDasharray: '1000 0', strokeDashoffset: '1000'}
-                            : {strokeDasharray: '0 1000', strokeDashoffset: '1000'}
-                        }
-                />
+                <circle cx="65" cy="65" r="65" stroke="#FFFFE7" ref={circleRef} className={style.circle}/>
             </svg>
             <div className={style.cursor_arrows} ref={cursorArrowsRef} >
                 <div className={style.cursor_left} ref={rightArrRef}/>

@@ -5,9 +5,10 @@ import Spacer from "./Spacer";
 import {Link} from "gatsby";
 import * as style from "../style/style.module.css";
 import {useEffect, useRef} from "react";
-import {gsap} from "gsap";
+import {useAnimationContext} from "../context/AnimationContext";
 
-const Footer = ({loco, gsapFade, }) => {
+const Footer = () => {
+    const {gsapFade} = useAnimationContext()
 
     const footerRef = useRef(null)
     const arrowRef = useRef(null)
@@ -15,7 +16,6 @@ const Footer = ({loco, gsapFade, }) => {
     const contactRef2 = useRef(null)
     const socialRef = useRef(null)
     const bottomRef = useRef(null)
-
 
     useEffect(()=>{
         setTimeout(()=> {

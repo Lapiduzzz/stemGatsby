@@ -5,7 +5,7 @@ import * as intro from '../style/introduction.module.css'
 import * as l from '../style/links.module.css'
 import 'normalize.css'
 import Layout from "../components/Layout";
-import {GatsbyImage, getImage, StaticImage} from "gatsby-plugin-image";
+import {GatsbyImage, getImage} from "gatsby-plugin-image";
 import Links from "../components/Links";
 import Spacer from "../components/Spacer";
 import {useEffect, useRef, useState} from "react";
@@ -13,33 +13,28 @@ import Video from "../components/Video";
 import {Link, graphql} from "gatsby";
 import Introduction from "../components/Introduction";
 import Menu from "../components/Menu";
-import {gsap} from "gsap";
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
-
+import {useAnimationContext} from "../context/AnimationContext";
+import {useImageCard} from "../context/ImageCardContext";
+import {useFloatingCursor} from "../context/FloatingCursorContext";
+import {useMenuContext} from "../context/MenuContext";
 
 const IndexPage = ({data}) => {
-
+    
     let frontmatter = data.mdx.frontmatter
 
-
-    const [menuDisplay, setMenuDisplay] = useState(false)
-    const [whichCard, setWhichCard] = useState('APPROACH')
-    const [cursorData, setCursorData] = useState(null)
-    const [isSectionHover, setIsSectionHover] = useState(false)
-    const [imageCardDisplay, setImageCardDisplay] = useState(false)
-    const [cursorArrowsDisplay, setCursorArrowsDisplay] = useState(false)
-    const [swiperHover, setSwiperHover] = useState(false)
-
+    const {gsapTxt, gsapFade, arrMove} = useAnimationContext()
+    const {menuDisplay} = useMenuContext()
+    const {setCursorParams, resetCursorParams, setSwiperHover} = useFloatingCursor()
+    const {swiperHover} = useFloatingCursor().state
+    const {setImageCardDisplay} = useImageCard()
 
     const sliderCard1 = getImage(frontmatter.sliderCard1)
     const sliderCard2 = getImage(frontmatter.sliderCard2)
     const sliderCard3 = getImage(frontmatter.sliderCard3)
     const sliderCard4 = getImage(frontmatter.sliderCard4)
-
-    const scrollContainerRef = useRef(null)
 
     const linkRef1 = useRef(null)
     const linkRef2 = useRef(null)
@@ -76,10 +71,6 @@ const IndexPage = ({data}) => {
     const banerRef3 = useRef(null)
     const banerRef4 = useRef(null)
     const banerArrRef = useRef(null)
-
-
-
-
 
 
     const links = [
@@ -121,66 +112,22 @@ const IndexPage = ({data}) => {
         },
     ]
 
-    const linkSectionOver = (dataCursor, cardDisplay, arrowDisplay) => {
-        if (isSectionHover === false) {
-            setCursorData(dataCursor)
-            setImageCardDisplay(cardDisplay)
-            setCursorArrowsDisplay(arrowDisplay)
-            setIsSectionHover(true)
+    const [hover, setHover] = useState(false)
+
+    const isSectionOver = (cursorData, cursorArrowsDisplay, imageCard) => {
+        if (hover === false) {
+            setCursorParams(cursorData, cursorArrowsDisplay)
+            setImageCardDisplay(imageCard)
+            setHover(true)
         }
     }
-    const linkSectionLeave = () => {
-        if (isSectionHover === true) {
+    const isSectionLeave = () => {
+        if (hover === true) {
+            resetCursorParams()
             setImageCardDisplay(false)
-            setCursorArrowsDisplay(false)
-            setIsSectionHover(false)
+            setHover(false)
         }
     }
-
-    const gsapTxt = (target, trigger, delay) => {
-        gsap.fromTo(target, {
-            duration: 1.5, ease: "power2.out", yPercent: 150, skewY: 5,
-        },
-        {duration: 1.5, ease: "power2.out", yPercent: 0, skewY: 0, delay: delay,
-            scrollTrigger: {
-                trigger: trigger,
-                scroller: scrollContainerRef.current,
-                start: 'top center',
-                end: 'bottom bottom',
-            }
-        }
-        )
-    }
-
-    const gsapFade = (target, trigger, delay, start) => {
-        gsap.from(target, {
-            duration: 1.25, opacity: 0, ease: "power2.out", delay: delay,
-            scrollTrigger: {
-                trigger: trigger,
-                scroller: scrollContainerRef.current,
-                start: start,
-                end: 'bottom bottom',
-            }
-        })
-    }
-
-    const arrMove = (target, trigger) => {
-        gsap.from(target, {duration: 1.25, ease: "power2.out", translateX: '-100%', delay: 1.25,
-            scrollTrigger: {
-                trigger: trigger,
-                scroller: scrollContainerRef.current,
-                start: 'top center',
-                end: 'bottom bottom',
-            }
-        }
-)
-
-
-
-    }
-
-
-    gsap.registerPlugin(ScrollTrigger)
 
     useEffect(() => {
         gsapTxt(linkRef1.current, LinkSection.current, 0,)
@@ -191,16 +138,13 @@ const IndexPage = ({data}) => {
         gsapTxt(linkRef6.current, LinkSection.current, 0.5,)
         gsapFade(videoRef.current, videoRef.current, 0, 'top center')
 
-
         gsapTxt(link2Ref1.current, section2Ref.current, 0,)
         gsapTxt(link2Ref2.current, section2Ref.current, 0.2,)
         gsapTxt(link2Ref3.current, section2Ref.current, 0.4,)
         gsapTxt(link2Ref4.current, section2Ref.current, 0.6,)
         gsapFade(p2Ref.current, section2Ref.current, 0.8, 'top center')
 
-
         gsapFade(swiperRef.current, swiperRef.current, 0, 'top center')
-
 
         gsapTxt(banerRef1.current, banerRef.current, 0,)
         gsapTxt(banerRef2.current, banerRef.current, 0.2,)
@@ -216,50 +160,31 @@ const IndexPage = ({data}) => {
             arrRef6.current,
         ],LinkSection.current )
         arrMove(banerArrRef.current, banerRef.current)
-
-
     }, [])
 
-
     return (
-        <Layout title={frontmatter.head}
-                whichCard={whichCard}
-                setWhichCard={setWhichCard}
-                cursorData={cursorData}
-                isSectionHover={isSectionHover}
-                imageCardDisplay={imageCardDisplay}
-                setMenuDisplay={setMenuDisplay}
-                scrollContainerRef={scrollContainerRef}
-                cursorArrowsDisplay={cursorArrowsDisplay}
-                swiperHover={swiperHover}
-                gsapFade={gsapFade} gsapTxt={gsapTxt}
-        >
+        <Layout title={frontmatter.head}>
 
             {menuDisplay ? <Menu links={links}/> : null}
-
-
 
             <Introduction backgroundImg={data.mdx.frontmatter.backgroundImg}
                           alt={frontmatter.backgroundImgAlt}
                           hStr1={'Embrace'}
                           hStr2={'A new'}
                           hStr3={'Reality'}
-                          gsapFade={gsapFade}
-                          gsapTxt={gsapTxt}
                           bottomText={'Owned and operated by nicole cooper, stem is a boutique floral practice crafting ' +
                           'unique and scalable botanical arrangements. Whether it’s events, weddings or experimental ' +
                           'arrangements - impossible is our speciality.'}
             />
             <Spacer/>
             <section className={home.internal_page_links} ref={LinkSection} data-scrol-section
-                     onMouseEnter={e => linkSectionOver('Explore', true, false)}
-                     onMouseLeave={e => linkSectionLeave()}
+                     onMouseEnter={e => isSectionOver('Explore',false, true,)}
+                     onMouseLeave={e => isSectionLeave()}
             >
                 <div className={home.links_wrapper}>
                     {links.map(link => (<Links title={link.title}
                                                fontSize={'10vw'}
                                                position={link.position}
-                                               setWhichCard={setWhichCard}
                                                linkRef={link.linkRef}
                                                arrRef={link.arrRef}
                                                arrowSize={'7vw'}
@@ -311,8 +236,8 @@ const IndexPage = ({data}) => {
                     </p>
                 </div>
                 <div className={home.swiper_container}
-                     onMouseEnter={e => linkSectionOver('', false, true)}
-                     onMouseLeave={e => linkSectionLeave()}>
+                     onMouseEnter={e => isSectionOver('', true, false)}
+                     onMouseLeave={e => isSectionLeave()}>
                     <Swiper
                         className={home.swiper}
                         spaceBetween={0}
@@ -356,8 +281,8 @@ const IndexPage = ({data}) => {
             <Spacer/>
             <section className={home.banner} data-scrol-section
                      ref={banerRef}
-                     onMouseEnter={e => linkSectionOver('ENQUIRE', false, false)}
-                     onMouseLeave={e => linkSectionLeave()}
+                     onMouseEnter={e => isSectionOver("Enquire", false, false)}
+                     onMouseLeave={e => isSectionLeave()}
             >
                 <div className={home.links_wrapper}>
                     <Link to={'/contact'}>
@@ -380,7 +305,7 @@ const IndexPage = ({data}) => {
                             >mood?</h1>
                         </div>
                             <Links title={'let\'s chat'} fontSize={'10vw'} position={style.start}
-                                   setWhichCard={setWhichCard} linkRef={banerRef4} arrRef={banerArrRef} arrowSize={'7vw'}/>
+                                   linkRef={banerRef4} arrRef={banerArrRef} arrowSize={'7vw'}/>
                     </Link>
                 </div>
             </section>

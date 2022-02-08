@@ -2,8 +2,11 @@ import * as React from "react"
 import * as header  from "../style/header.module.css"
 import * as style from '../style/style.module.css'
 import {Link} from "gatsby";
+import {useMenuContext} from "../context/MenuContext";
 
-const Header = ({title, setMenuDisplay}) => {
+const Header = ({title}) => {
+
+    const {setMenuDisplay} = useMenuContext()
 
     return (
         <div className={header.header}>
