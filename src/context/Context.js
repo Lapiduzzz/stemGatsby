@@ -3,6 +3,7 @@ import {AnimationProvider} from "./AnimationContext";
 import {ImageCardProvider} from "./ImageCardContext";
 import {FloatingCursorProvider} from "./FloatingCursorContext";
 import {MenuProvider} from "./MenuContext";
+import {LocoScrollProvider} from "./LocomotiveScrollContext";
 
 const StateContext = createContext()
 
@@ -20,7 +21,9 @@ export const ContextProvider = ({children}) => {
                 <FloatingCursorProvider>
                     <ImageCardProvider>
                         <MenuProvider>
-                            {children}
+                            <LocoScrollProvider>
+                                {children}
+                            </LocoScrollProvider>
                         </MenuProvider>
                     </ImageCardProvider>
                 </FloatingCursorProvider>

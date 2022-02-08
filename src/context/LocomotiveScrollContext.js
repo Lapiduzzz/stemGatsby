@@ -1,13 +1,15 @@
-import React, {useEffect, } from "react";
+import React, {createContext, useContext, useEffect,} from "react";
 import {gsap} from "gsap";
 import LocomotiveScroll from "locomotive-scroll";
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import * as style from "../style/style.module.css";
-import {useStateContext} from "../context/Context";
+import {useStateContext} from "./Context";
 
+const LocoScrollContext = createContext()
 
+export const useLocoScrollContext = () => (useContext(LocoScrollContext))
 
-const LocoScroll = ({children}) => {
+export const LocoScrollProvider = ({children}) => {
 
     const {scrollContainerRef} = useStateContext()
 
@@ -45,15 +47,12 @@ const LocoScroll = ({children}) => {
         ScrollTrigger.refresh();
     }
 
-    useEffect(() => {
-        return ScrollInit()
-    }, [ScrollTrigger])
-
     return (
-            <div className={style.wrapper} data-scroll-container ref={scrollContainerRef} >
+        <LocoScrollContext.Provider value={{ScrollInit, ScrollTrigger}}>
+            <div className={style.wrapper} data-scroll-container ref={scrollContainerRef}>
                 {children}
             </div>
+        </LocoScrollContext.Provider>
     )
 }
 
-export default LocoScroll

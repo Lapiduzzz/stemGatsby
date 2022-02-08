@@ -5,13 +5,23 @@ import '../style/LS.css'
 import ImageCard from "./ImageCard";
 import FloatingCursor from "./FloatingCursor";
 import LocoScroll from "./LocomotiveScroll";
+import {useEffect} from "react";
+import {useLocoScrollContext} from "../context/LocomotiveScrollContext";
+import * as style from "../style/style.module.css";
+import {useStateContext} from "../context/Context";
 
 
 
 const Layout = ({children, title}) => {
 
+    const {ScrollInit, ScrollTrigger} = useLocoScrollContext()
+
+    useEffect(()=>{
+        return ScrollInit()
+    },[ScrollTrigger])
+
     return (
-        <LocoScroll>
+        <div>
                 <ImageCard/>
                 <FloatingCursor/>
                 <Header title={title}/>
@@ -19,8 +29,7 @@ const Layout = ({children, title}) => {
                     {children}
                 </main>
                 <Footer/>
-        </LocoScroll>
-
+        </div>
     )
 }
 
