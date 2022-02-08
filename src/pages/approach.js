@@ -3,8 +3,7 @@ import 'normalize.css'
 import Layout from "../components/Layout";
 import Introduction from "../components/Introduction";
 
-const IndexPage = () => {
-
+const ApproachPage = () => {
 
     return (
         <Layout title={'approach'}>
@@ -24,4 +23,4 @@ const IndexPage = () => {
     )
 }
 
-export default IndexPage
+export default ApproachPage
