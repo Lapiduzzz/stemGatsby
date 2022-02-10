@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "Gatsby-Stem",
+    siteUrl: "https://stemgatsbymdx.gatsbyjs.io/",
+    title: "Sweet-Stems",
   },
   plugins: [
     "gatsby-plugin-sass",

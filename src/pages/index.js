@@ -149,10 +149,10 @@ const IndexPage = ({data}) => {
 
         gsapFade(swiperRef.current, swiperRef.current, 0, 'top center')
 
-        gsapTxt(banerRef1.current, banerRef.current, 0,)
-        gsapTxt(banerRef2.current, banerRef.current, 0.2,)
-        gsapTxt(banerRef3.current, banerRef.current, 0.4,)
-        gsapTxt(banerRef4.current, banerRef.current, 0.6,)
+        gsapTxt(banerRef1.current, banerRef.current, 0, 0)
+        gsapTxt(banerRef2.current, banerRef.current, 0.2, 0)
+        gsapTxt(banerRef3.current, banerRef.current, 0.4, 0)
+        gsapTxt(banerRef4.current, banerRef.current, 0.6, 0)
 
         arrMove([
             arrRef1.current,
@@ -175,7 +175,7 @@ const IndexPage = ({data}) => {
                           hStr1={'Embrace'}
                           hStr2={'A new'}
                           hStr3={'Reality'}
-                          bottomText={'Owned and operated by nicole cooper, stem is a boutique floral practice crafting ' +
+                          bottomText={'Owned and operated by nicole cooper, Sweet Stems is a boutique floral practice crafting ' +
                           'unique and scalable botanical arrangements. Whether it’s events, weddings or experimental ' +
                           'arrangements - impossible is our speciality.'}
             />
@@ -234,7 +234,7 @@ const IndexPage = ({data}) => {
                     <p className={home.text_right}>
                         <span>Follow Us</span><br/>
                         <Link to={'https://www.instagram.com/stemdesignflorals'} className={style.link}>
-                            <span>@stemdesignflorals</span>
+                            <span>@sweetstemsdesignflorals</span>
                         </Link>
                     </p>
                 </div>

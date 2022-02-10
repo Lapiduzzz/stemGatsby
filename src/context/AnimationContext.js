@@ -10,11 +10,11 @@ export const AnimationProvider = ({children}) => {
 
     const {scrollContainerRef} = useStateContext()
 
-    const gsapTxt = (target, trigger, delay) => {
+    const gsapTxt = (target, trigger, delay, yPercent = 5,) => {
         gsap.fromTo(target, {
                 duration: 1.5, ease: "power2.out", yPercent: 150, skewY: 5,
             },
-            {duration: 1.5, ease: "power2.out", yPercent: 5, skewY: 0, delay: delay,
+            {duration: 1.5, ease: "power2.out", yPercent: yPercent, skewY: 0, delay: delay,
                 scrollTrigger: {
                     trigger: trigger,
                     scroller: scrollContainerRef.current,

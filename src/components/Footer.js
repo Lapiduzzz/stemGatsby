@@ -40,7 +40,7 @@ const Footer = () => {
             <Spacer/>
             <div className={footer.contact_wrapper}>
                 <p ref={contactRef1}><span>A/ </span>168a Barry Parade, <br/> Fortitude Valley QLD 4006</p>
-                <p ref={contactRef2}><span>E/ </span>info@stemdesign.net <br/> <span>P/</span> (+61) 404 634 205</p>
+                <p ref={contactRef2}><span>E/ </span>info@SweetStemdesign.net <br/> <span>P/</span> (+61) 404 634 205</p>
             </div>
             <Spacer/>
             <div className={footer.social_wrapper}>
@@ -63,11 +63,11 @@ const Footer = () => {
                 </div>
             </div>
             <div className={footer.bottom} ref={bottomRef}>
-                <p>©stemdesign 2022</p>
+                <p>©SweetStemdesign 2022</p>
                 <div className={footer.bottom_center}>
-                    <p>Stem design <span>by</span> nicole cooper</p>
+                    <p>SweetStem design <span>by</span> nicole cooper</p>
                 </div>
-                <p>Website by</p>
+                <p>Website by Edward F.</p>
             </div>
         </section>
     )
