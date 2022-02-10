@@ -6,20 +6,24 @@ import ImageCard from "./ImageCard";
 import FloatingCursor from "./FloatingCursor";
 import {useEffect, useMemo} from "react";
 import {useLocoScrollContext} from "../context/LocomotiveScrollContext";
-
+import {Helmet} from "react-helmet";
 
 
 const Layout = ({children, title}) => {
 
     const {ScrollInit, ScrollTrigger} = useLocoScrollContext()
 
-    useEffect(()=>{
+    useEffect(() => {
         ScrollInit('reset')
         return ScrollInit('init')
-    },[ScrollTrigger])
+    }, [ScrollTrigger])
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Stem {title}</title>
+            </Helmet>
                 <ImageCard/>
                 <FloatingCursor/>
                 <Header title={title}/>
