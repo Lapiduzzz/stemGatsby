@@ -2,9 +2,24 @@ import * as React from "react"
 import 'normalize.css'
 import Layout from "../components/Layout";
 import Introduction from "../components/Introduction";
+import {useEffect} from "react";
+import {useAnimationContext} from "../context/AnimationContext";
+import {useMenuContext} from "../context/MenuContext";
+import {useFloatingCursor} from "../context/FloatingCursorContext";
+import {useImageCard} from "../context/ImageCardContext";
 
 const ApproachPage = () => {
 
+    const {gsapTxt, gsapFade, arrMove} = useAnimationContext()
+    const {menuDisplay} = useMenuContext()
+    const {setCursorParams, resetCursorParams, setSwiperHover} = useFloatingCursor()
+    const {swiperHover} = useFloatingCursor().state
+    const {setImageCardDisplay} = useImageCard()
+
+    useEffect(()=>{
+        resetCursorParams()
+        setImageCardDisplay(false)
+    },[])
     return (
         <Layout title={'approach'}>
             <Introduction
@@ -18,7 +33,6 @@ const ApproachPage = () => {
             <Introduction/>
             <Introduction/>
             <Introduction/>
-
         </Layout>
     )
 }

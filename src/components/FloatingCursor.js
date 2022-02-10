@@ -4,7 +4,7 @@ import {useEffect, useRef} from "react";
 import {gsap} from "gsap";
 import {useFloatingCursor} from "../context/FloatingCursorContext";
 
-const FloatingCursor = () =>{
+const FloatingCursor = () => {
 
     const {isSectionHover, cursorData, cursorArrowsDisplay, swiperHover} = useFloatingCursor().state
 
@@ -16,59 +16,53 @@ const FloatingCursor = () =>{
     const cursorDataRef = useRef(null)
 
     const leftArrowAnimate = (which, trigger, oneParam, secondParam) => {
-         which
-            ? gsap.to(trigger,{ duration: 1, css: {left: oneParam}})
-            : gsap.to(trigger,{ duration: 1, css: {left: secondParam}})
+        which
+            ? gsap.to(trigger, {duration: 1, css: {left: oneParam}})
+            : gsap.to(trigger, {duration: 1, css: {left: secondParam}})
     }
     const rightArrowAnimate = (which, trigger, oneParam, secondParam) => {
         which
-            ? gsap.to(trigger,{ duration: 1, css: {right: oneParam}})
-            : gsap.to(trigger,{ duration: 1, css: {right: secondParam}})
+            ? gsap.to(trigger, {duration: 1, css: {right: oneParam}})
+            : gsap.to(trigger, {duration: 1, css: {right: secondParam}})
     }
 
-    useEffect(()=>{
+    useEffect(() => {
 
         isSectionHover
-            ? gsap.to(circleRef.current, {
-                duration: 2,
-                css: {strokeDasharray: '1000 0',}
-            })
-            : gsap.to(circleRef.current, {
-                duration: 1,
-                css: {strokeDasharray: '0 1000',}
-            })
+            ? gsap.set(circleRef.current, {duration: 2, css: {strokeDasharray: '1000 0'}})
+            : gsap.set(circleRef.current, {duration: 1, css: {strokeDasharray: '0 1000'}})
 
         gsap.to(cursorDataRef.current, {duration: 0.5, css: isSectionHover ? {opacity: '1'} : {opacity: '0'}})
 
-    },[isSectionHover])
-    useEffect(()=>{
+    }, [isSectionHover])
+    useEffect(() => {
 
-        leftArrowAnimate(cursorArrowsDisplay, rightArrRef.current, 25,  35)
-        rightArrowAnimate(cursorArrowsDisplay, leftArrRef.current, 20,  30)
+        leftArrowAnimate(cursorArrowsDisplay, rightArrRef.current, 25, 35)
+        rightArrowAnimate(cursorArrowsDisplay, leftArrRef.current, 20, 30)
         gsap.to(cursorArrowsRef.current, {duration: 0.5, css: cursorArrowsDisplay ? {opacity: 1} : {opacity: 0}})
 
-    },[cursorArrowsDisplay])
-    useEffect(()=>{
+    }, [cursorArrowsDisplay])
+    useEffect(() => {
 
-        leftArrowAnimate(swiperHover, rightArrRef.current, 5,  25)
-        rightArrowAnimate(swiperHover, leftArrRef.current, 0,  20)
-        gsap.to(circleRef.current,{ duration: 0.5, css: swiperHover ? {r: 30} : {r: 65}})
+        leftArrowAnimate(swiperHover, rightArrRef.current, 5, 25)
+        rightArrowAnimate(swiperHover, leftArrRef.current, 0, 20)
+        gsap.to(circleRef.current, {duration: 0.5, css: swiperHover ? {r: 30} : {r: 65}})
 
-    },[swiperHover])
-    useEffect(()=>{
-
-        gsap.set('.floating_cursor',{xPercent:-50,yPercent:-50})
-        window.addEventListener("mousemove", (e)=>{
-            gsap.to(cursorRef.current,.75,{x:e.clientX,y:e.clientY});
+    }, [swiperHover])
+    useEffect(() => {
+        gsap.set('.floating_cursor', {xPercent: -50, yPercent: -50})
+        window.addEventListener("mousemove", (e) => {
+            gsap.to(cursorRef.current, .75, {x: e.clientX, y: e.clientY});
         })
-    },[])
+    }, [])
 
     return (
         <div className={style.floating_cursor} ref={cursorRef}>
             <svg width="135" height="135" x="0px" y="0px" viewBox="0 0 135 135" fill="none">
-                <circle cx="65" cy="65" r="65" stroke="#FFFFE7" ref={circleRef} className={style.circle}/>
+                <circle cx="65" cy="65" r="65" stroke="#FFFFE7" ref={circleRef}
+                        className={isSectionHover ? `${style.circle} + ${style.circle_active}` : style.circle}/>
             </svg>
-            <div className={style.cursor_arrows} ref={cursorArrowsRef} >
+            <div className={style.cursor_arrows} ref={cursorArrowsRef}>
                 <div className={style.cursor_left} ref={rightArrRef}/>
                 <div className={style.cursor_right} ref={leftArrRef}/>
             </div>

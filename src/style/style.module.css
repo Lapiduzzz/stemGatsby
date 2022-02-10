@@ -124,7 +124,12 @@ p{
 .circle{
     stroke: var(--color1);
     stroke-dashoffset: 1000;
-    stroke-dasharray: 0 1000;
+    animation: circleOut 1s ease;
+    opacity: .4;
+}
+
+.circle_active{
+    animation: circleIn 2s ease;
 }
 
 .cursor_data{
@@ -166,6 +171,22 @@ p{
 }
 
 
+@keyframes circleIn {
+    from {
+        stroke-dasharray: 0 1000;
+    }
+    to{
+        stroke-dasharray: 1000 0;
+    }
+}
+@keyframes circleOut {
+    from {
+        stroke-dasharray: 1000 0;
+    }
+    to{
+        stroke-dasharray: 0 1000;
+    }
+}
 
 
 @media all and (max-width: 768px) {
