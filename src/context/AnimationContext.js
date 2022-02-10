@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useRef} from "react";
+import React, {createContext, useContext} from "react";
 import {gsap} from "gsap";
 import {useStateContext} from "./Context";
 

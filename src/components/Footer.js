@@ -1,5 +1,4 @@
 import * as React from "react"
-import * as s from "../style/header.module.css"
 import * as footer from "../style/footer.module.css"
 import Spacer from "./Spacer";
 import {Link} from "gatsby";

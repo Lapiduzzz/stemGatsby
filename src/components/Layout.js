@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import '../style/LS.css'
 import ImageCard from "./ImageCard";
 import FloatingCursor from "./FloatingCursor";
-import {useEffect, useMemo} from "react";
+import {useEffect} from "react";
 import {useLocoScrollContext} from "../context/LocomotiveScrollContext";
 import {Helmet} from "react-helmet";
 

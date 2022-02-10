@@ -1,4 +1,4 @@
-import React, {createContext, useCallback, useContext, useEffect, useMemo,} from "react";
+import React, {createContext,useContext,} from "react";
 import {gsap} from "gsap";
 import LocomotiveScroll from "locomotive-scroll";
 import ScrollTrigger from 'gsap/ScrollTrigger';
