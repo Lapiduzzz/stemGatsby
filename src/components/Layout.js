@@ -21,7 +21,6 @@ const Layout = ({children, title}) => {
     return (
         <div>
             <Helmet>
-                <meta charSet="utf-8" />
                 <meta name='description' content='stem design'/>
                 <title>Stem {title}</title>
             </Helmet>
