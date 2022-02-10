@@ -22,7 +22,6 @@ const Layout = ({children, title}) => {
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <meta name='description' content='stem design'/>
                 <title>Stem {title}</title>
             </Helmet>
                 <ImageCard/>
