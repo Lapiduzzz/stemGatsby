@@ -3,15 +3,25 @@ import * as image from "../style/image_card.module.css"
 import {useEffect, useRef} from "react";
 import {gsap} from "gsap";
 import {useImageCard} from "../context/ImageCardContext";
-import imageCard1 from '/src/images/imageCard/ImageCard1.webp'
-import imageCard2 from '/src/images/imageCard/ImageCard2.webp'
-import imageCard3 from '/src/images/imageCard/ImageCard3.webp'
-import imageCard4 from '/src/images/imageCard/ImageCard4.webp'
-import imageCard5 from '/src/images/imageCard/ImageCard5.webp'
-import imageCard6 from '/src/images/imageCard/ImageCard6.webp'
+
+import {graphql, useStaticQuery} from "gatsby";
 
 
 const ImageCard = () => {
+
+    const data = useStaticQuery(graphql`
+        query{
+            datoCmsImagecard {
+                cards {
+                    url(imgixParams: {h: "450", w: "350"})
+                }
+            }
+        }
+    `)
+
+    const imageCards = data.datoCmsImagecard.cards
+
+
 
     const {whichCard, imageCardDisplay} = useImageCard().state
 
@@ -25,12 +35,12 @@ const ImageCard = () => {
     const imageRef6 = useRef(null)
 
     const cards = [
-        {card: imageCard1, ref: imageRef1},
-        {card: imageCard2, ref: imageRef2},
-        {card: imageCard3, ref: imageRef3},
-        {card: imageCard4, ref: imageRef4},
-        {card: imageCard5, ref: imageRef5},
-        {card: imageCard6, ref: imageRef6},
+        {card: imageCards[0].url, ref: imageRef1},
+        {card: imageCards[1].url, ref: imageRef2},
+        {card: imageCards[2].url, ref: imageRef3},
+        {card: imageCards[3].url, ref: imageRef4},
+        {card: imageCards[4].url, ref: imageRef5},
+        {card: imageCards[5].url, ref: imageRef6},
     ]
 
     const cardDisplay = (target) => {

@@ -42,6 +42,14 @@ module.exports = {
       },
       __key: "markdown",
     },
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: `6977bab17ef52632dfa3388a67e509`,
+        preview: false,
+        disableLiveReload: false,
+      },
+    },
     /*{
       resolve: "gatsby-source-strapi",
       options: {

@@ -129,7 +129,10 @@ const IndexPage = ({data}) => {
         }
     }
 
+    const [load, setLoad] = useState(false)
+
     useEffect(() => {
+
         gsapTxt(linkRef1.current, LinkSection.current, 0,)
         gsapTxt(linkRef2.current, LinkSection.current, 0.1,)
         gsapTxt(linkRef3.current, LinkSection.current, 0.2,)
