@@ -10,10 +10,20 @@
     align-items: center;
     background: var(--color2);
     transition: all 1s ease;
+    animation: menu 1s ease;
 }
 .menu{
     width: 40%;
 }
 .link_container{
     margin: 20px 0;
+}
+
+@keyframes menu {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }

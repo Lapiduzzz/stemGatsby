@@ -7,7 +7,7 @@ import {gsap} from "gsap";
 import {useImageCard} from "../context/ImageCardContext";
 
 
-const Links = ({title, fontSize, position, arrowSize, linkRef, arrRef,}) => {
+const Links = ({link = '', title, fontSize, position, arrowSize, linkRef, arrRef,}) => {
 
     const [headerLinkHover, setHeaderLinkHover] = useState(false)
     const [arrowLoaded, setArrowLoaded] = useState(false)
@@ -42,7 +42,7 @@ const Links = ({title, fontSize, position, arrowSize, linkRef, arrRef,}) => {
     }, [headerLinkHover])
 
     return (
-        <Link to={`/${title}`}>
+        <Link to={`/${link}`}>
             <div className={links.links_container} data-scroll
                  onMouseEnter={e => linkOver(e)}
                  onMouseLeave={e => linkLeave(e)}>

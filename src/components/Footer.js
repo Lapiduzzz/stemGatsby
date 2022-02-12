@@ -1,13 +1,20 @@
 import * as React from "react"
+import * as s from "../style/header.module.css"
 import * as footer from "../style/footer.module.css"
 import Spacer from "./Spacer";
 import {Link} from "gatsby";
 import * as style from "../style/style.module.css";
 import {useEffect, useRef} from "react";
 import {useAnimationContext} from "../context/AnimationContext";
+import {useLocoScrollContext} from "../context/LocomotiveScrollContext";
+import {useMenuContext} from "../context/MenuContext";
 
 const Footer = () => {
+
     const {gsapFade} = useAnimationContext()
+    const {scrollTop} = useLocoScrollContext()
+    const {menuDisplay} = useMenuContext()
+
 
     const footerRef = useRef(null)
     const arrowRef = useRef(null)
@@ -15,6 +22,7 @@ const Footer = () => {
     const contactRef2 = useRef(null)
     const socialRef = useRef(null)
     const bottomRef = useRef(null)
+
 
     useEffect(()=>{
         setTimeout(()=> {
@@ -27,9 +35,10 @@ const Footer = () => {
     },[])
 
     return (
-        <section className={footer.footer} data-scroll-section ref={footerRef}>
+        <section className={footer.footer} data-scroll-section ref={footerRef}
+                 style={menuDisplay ? {display: "none"} : {display: "block"}}>
             <div className={footer.arrow_wrapper}>
-                <div className={footer.arrow} ref={arrowRef}>
+                <div className={footer.arrow} ref={arrowRef} onClick={() => scrollTop()}>
                     <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 8H18" stroke="#FFFFE7" stroke-miterlimit="10"/>
                         <path d="M7.97838 0C7.97838 4.39024 4.37838 8 0 8" stroke="#FFFFE7" stroke-miterlimit="10"/>
@@ -40,7 +49,7 @@ const Footer = () => {
             <Spacer/>
             <div className={footer.contact_wrapper}>
                 <p ref={contactRef1}><span>A/ </span>168a Barry Parade, <br/> Fortitude Valley QLD 4006</p>
-                <p ref={contactRef2}><span>E/ </span>info@SweetStemdesign.net <br/> <span>P/</span> (+61) 404 634 205</p>
+                <p ref={contactRef2}><span>E/ </span>info@stemdesign.net <br/> <span>P/</span> (+61) 404 634 205</p>
             </div>
             <Spacer/>
             <div className={footer.social_wrapper}>
@@ -63,11 +72,11 @@ const Footer = () => {
                 </div>
             </div>
             <div className={footer.bottom} ref={bottomRef}>
-                <p>©SweetStemdesign 2022</p>
+                <p>©stemdesign 2022</p>
                 <div className={footer.bottom_center}>
-                    <p>SweetStem design <span>by</span> nicole cooper</p>
+                    <p>Stem design <span>by</span> nicole cooper</p>
                 </div>
-                <p>Website by Edward F.</p>
+                <p>Website by</p>
             </div>
         </section>
     )

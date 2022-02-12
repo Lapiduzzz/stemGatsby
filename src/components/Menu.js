@@ -1,32 +1,42 @@
 import * as React from "react"
 import Links from "./Links";
-import * as style from "../style/style.module.css"
 import * as menu from "../style/menu.module.css"
-import {useRef} from "react";
+import {useEffect, useRef} from "react";
+import {useMenuContext} from "../context/MenuContext";
+import {useAnimationContext} from "../context/AnimationContext";
 
 
-const Menu = ({links}) => {
+const Menu = () => {
 
-    const menuLinkRef = useRef(null)
-    const menuArrRef = useRef(null)
+    const menuRef = useRef(null)
 
-    links.splice(4,1)
-    const menuLinks = [
-        {
-            title: 'home',
-            position: style.center,
-            linkRef: menuLinkRef,
-            arrRef: menuArrRef,
-        },
-        ...links
-        ]
+    const {menuLinks} = useMenuContext()
+    const {gsapTxt, gsapFade, arrMove} = useAnimationContext()
+
+    useEffect(()=>{
+        gsapTxt(menuLinks[0].linkRef.current, menuRef.current, 0,)
+        gsapTxt(menuLinks[1].linkRef.current, menuRef.current, 0.1,)
+        gsapTxt(menuLinks[2].linkRef.current, menuRef.current, 0.2,)
+        gsapTxt(menuLinks[3].linkRef.current, menuRef.current, 0.3,)
+        gsapTxt(menuLinks[4].linkRef.current, menuRef.current, 0.4,)
+        gsapTxt(menuLinks[5].linkRef.current, menuRef.current, 0.5,)
+        arrMove([
+            menuLinks[0].arrRef.current,
+            menuLinks[1].arrRef.current,
+            menuLinks[2].arrRef.current,
+            menuLinks[3].arrRef.current,
+            menuLinks[4].arrRef.current,
+            menuLinks[5].arrRef.current,
+        ],menuRef.current )
+    }, [])
 
     return (
-        <div className={menu.menu_container}>
+        <div className={menu.menu_container} data-scroll ref={menuRef}>
             <div className={menu.menu}>
                 {menuLinks.map(link => (
                     <div className={menu.link_container}>
                         <Links title={link.title}
+                               link={link.link}
                                fontSize={'5vw'}
                                arrowSize={'3vw'}
                                position={link.position}

@@ -7,11 +7,15 @@ import FloatingCursor from "./FloatingCursor";
 import {useEffect} from "react";
 import {useLocoScrollContext} from "../context/LocomotiveScrollContext";
 import {Helmet} from "react-helmet";
+import Menu from "./Menu";
+import {useMenuContext} from "../context/MenuContext";
 
 
 const Layout = ({children, title}) => {
 
     const {ScrollInit, ScrollTrigger} = useLocoScrollContext()
+
+    const {menuDisplay} = useMenuContext()
 
     useEffect(() => {
         ScrollInit('reset')
@@ -28,8 +32,8 @@ const Layout = ({children, title}) => {
                 <FloatingCursor/>
                 <Header title={title}/>
                 <main data-scroll-section>
-                    {children}
-                </main>
+                    {menuDisplay ? <Menu/> : children }
+                </main>}
                 <Footer/>
         </div>
     )

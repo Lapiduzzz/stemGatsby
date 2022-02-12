@@ -12,7 +12,6 @@ import {useEffect, useRef, useState} from "react";
 import Video from "../components/Video";
 import {Link, graphql} from "gatsby";
 import Introduction from "../components/Introduction";
-import Menu from "../components/Menu";
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
@@ -24,31 +23,19 @@ import {useMenuContext} from "../context/MenuContext";
 const IndexPage = ({data}) => {
     
     let frontmatter = data.mdx.frontmatter
+    const [hover, setHover] = useState(false)
 
     const {gsapTxt, gsapFade, arrMove} = useAnimationContext()
-    const {menuDisplay} = useMenuContext()
     const {setCursorParams, resetCursorParams, setSwiperHover} = useFloatingCursor()
     const {swiperHover} = useFloatingCursor().state
     const {setImageCardDisplay} = useImageCard()
+    const {homeLinks} = useMenuContext()
+
 
     const sliderCard1 = getImage(frontmatter.sliderCard1)
     const sliderCard2 = getImage(frontmatter.sliderCard2)
     const sliderCard3 = getImage(frontmatter.sliderCard3)
     const sliderCard4 = getImage(frontmatter.sliderCard4)
-
-    const linkRef1 = useRef(null)
-    const linkRef2 = useRef(null)
-    const linkRef3 = useRef(null)
-    const linkRef4 = useRef(null)
-    const linkRef5 = useRef(null)
-    const linkRef6 = useRef(null)
-
-    const arrRef1 = useRef(null)
-    const arrRef2 = useRef(null)
-    const arrRef3 = useRef(null)
-    const arrRef4 = useRef(null)
-    const arrRef5 = useRef(null)
-    const arrRef6 = useRef(null)
 
     const LinkSection = useRef(null)
 
@@ -73,46 +60,6 @@ const IndexPage = ({data}) => {
     const banerArrRef = useRef(null)
 
 
-    const links = [
-        {
-            title: 'approach',
-            position: style.start,
-            linkRef: linkRef1,
-            arrRef: arrRef1,
-        },
-        {
-            title: 'folio',
-            position: style.start,
-            linkRef: linkRef2,
-            arrRef: arrRef2,
-        },
-        {
-            title: 'films',
-            position: style.end,
-            linkRef: linkRef3,
-            arrRef: arrRef3,
-        },
-        {
-            title: 'about',
-            position: style.start,
-            linkRef: linkRef4,
-            arrRef: arrRef4,
-        },
-        {
-            title: 'store',
-            position: style.center,
-            linkRef: linkRef5,
-            arrRef: arrRef5,
-        },
-        {
-            title: 'contact',
-            position: style.center,
-            linkRef: linkRef6,
-            arrRef: arrRef6,
-        },
-    ]
-
-    const [hover, setHover] = useState(false)
 
     const isSectionOver = (cursorData, cursorArrowsDisplay, imageCard) => {
         if (hover === false) {
@@ -129,16 +76,14 @@ const IndexPage = ({data}) => {
         }
     }
 
-    const [load, setLoad] = useState(false)
-
     useEffect(() => {
 
-        gsapTxt(linkRef1.current, LinkSection.current, 0,)
-        gsapTxt(linkRef2.current, LinkSection.current, 0.1,)
-        gsapTxt(linkRef3.current, LinkSection.current, 0.2,)
-        gsapTxt(linkRef4.current, LinkSection.current, 0.3,)
-        gsapTxt(linkRef5.current, LinkSection.current, 0.4,)
-        gsapTxt(linkRef6.current, LinkSection.current, 0.5,)
+        gsapTxt(homeLinks[0].linkRef.current, LinkSection.current, 0,)
+        gsapTxt(homeLinks[1].linkRef.current, LinkSection.current, 0.1,)
+        gsapTxt(homeLinks[2].linkRef.current, LinkSection.current, 0.2,)
+        gsapTxt(homeLinks[3].linkRef.current, LinkSection.current, 0.3,)
+        gsapTxt(homeLinks[4].linkRef.current, LinkSection.current, 0.4,)
+        gsapTxt(homeLinks[5].linkRef.current, LinkSection.current, 0.5,)
         gsapFade(videoRef.current, videoRef.current, 0, 'top center')
 
         gsapTxt(link2Ref1.current, section2Ref.current, 0,)
@@ -155,21 +100,18 @@ const IndexPage = ({data}) => {
         gsapTxt(banerRef4.current, banerRef.current, 0.6, 0)
 
         arrMove([
-            arrRef1.current,
-            arrRef2.current,
-            arrRef3.current,
-            arrRef4.current,
-            arrRef5.current,
-            arrRef6.current,
+            homeLinks[0].arrRef.current,
+            homeLinks[1].arrRef.current,
+            homeLinks[2].arrRef.current,
+            homeLinks[3].arrRef.current,
+            homeLinks[4].arrRef.current,
+            homeLinks[5].arrRef.current,
         ],LinkSection.current )
         arrMove(banerArrRef.current, banerRef.current)
     }, [])
 
     return (
         <Layout title={frontmatter.head}>
-
-            {menuDisplay ? <Menu links={links}/> : null}
-
             <Introduction backgroundImg={data.mdx.frontmatter.backgroundImg}
                           alt={frontmatter.backgroundImgAlt}
                           hStr1={'Embrace'}
@@ -185,7 +127,8 @@ const IndexPage = ({data}) => {
                      onMouseLeave={e => isSectionLeave()}
             >
                 <div className={home.links_wrapper}>
-                    {links.map(link => (<Links title={link.title}
+                    {homeLinks.map(link => (<Links title={link.title}
+                                               link={link.link}
                                                fontSize={'10vw'}
                                                position={link.position}
                                                linkRef={link.linkRef}
@@ -288,7 +231,6 @@ const IndexPage = ({data}) => {
                      onMouseLeave={e => isSectionLeave()}
             >
                 <div className={home.links_wrapper}>
-                    <Link to={'/contact'}>
                         <div className={`${l.link} + ${style.start}`}>
                             <h1 className={`${style.h1} + ${home.banner_h1}`}
                                 style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', lineHeight: '.85'}}
@@ -307,9 +249,8 @@ const IndexPage = ({data}) => {
                                 ref={banerRef3}
                             >mood?</h1>
                         </div>
-                            <Links title={'let\'s chat'} fontSize={'10vw'} position={style.start}
+                            <Links link={'contact'} title={'let\'s chat'} fontSize={'10vw'} position={style.start}
                                    linkRef={banerRef4} arrRef={banerArrRef} arrowSize={'7vw'}/>
-                    </Link>
                 </div>
             </section>
             <Spacer/>

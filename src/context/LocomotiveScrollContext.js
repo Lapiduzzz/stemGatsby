@@ -51,6 +51,18 @@ export const LocoScrollProvider = ({children}) => {
                 ScrollTrigger.refresh();
             }
                 break
+            case 'start': {
+                locoScroll !== undefined && locoScroll.start()
+            }
+                break
+            case 'stop': {
+                locoScroll !== undefined && locoScroll.stop()
+            }
+                break
+            case 'update': {
+                locoScroll !== undefined && locoScroll.update()
+            }
+                break
             case 'reset': {
                 locoScroll !== undefined && locoScroll.destroy()
             }
@@ -58,8 +70,12 @@ export const LocoScrollProvider = ({children}) => {
         }
     }
 
+    const scrollTop = () => {
+        locoScroll.scrollTo('top')
+    }
+
     return (
-        <LocoScrollContext.Provider value={{ScrollInit, ScrollTrigger}}>
+        <LocoScrollContext.Provider value={{ScrollInit, ScrollTrigger, scrollTop}}>
             <div className={style.wrapper} data-scroll-container ref={scrollContainerRef}>
                 {children}
             </div>
