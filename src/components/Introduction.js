@@ -28,9 +28,9 @@ const Introduction = ({backgroundImg, alt, bottomText, hStr1, hStr2, hStr3,}) =>
     },[])
 
     return (
-            <section className={intro.introduction} data-scroll ref={introRef}>
-                <GatsbyImage className={intro.backgroundImg} alt={alt} image={image} data-scroll/>
-                <div className={intro.header} data-scroll data-scroll-speed="1.5">
+            <section className={intro.introduction} data-scroll='true' ref={introRef}>
+                <GatsbyImage className={intro.backgroundImg} alt={alt} image={image} data-scroll='true'/>
+                <div className={intro.header} data-scroll='true'  data-scroll-speed="1.5">
                     <div className={intro.h_container} >
                         <h1 className={style.h1} ref={hRef1}>{hStr1}</h1>
                     </div>
@@ -41,7 +41,7 @@ const Introduction = ({backgroundImg, alt, bottomText, hStr1, hStr2, hStr3,}) =>
                         <h1 className={style.h1} ref={hRef3}>{hStr3}</h1>
                     </div>
                 </div>
-                <div className={intro.text} data-scroll>
+                <div className={intro.text} data-scroll='true'>
                     <p ref={pRef}>{bottomText}</p>
                 </div>
             </section>

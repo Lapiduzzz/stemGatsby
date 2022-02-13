@@ -9,6 +9,7 @@ import {useLocoScrollContext} from "../context/LocomotiveScrollContext";
 import {Helmet} from "react-helmet";
 import Menu from "./Menu";
 import {useMenuContext} from "../context/MenuContext";
+import PageCounter from "./PageCounter";
 
 
 const Layout = ({children, title}) => {
@@ -23,18 +24,22 @@ const Layout = ({children, title}) => {
     }, [ScrollTrigger])
 
     return (
-        <div>
+        <div id='fixed-target'>
             <Helmet>
                 <meta name='description' content='stem design'/>
                 <title>Stem {title}</title>
             </Helmet>
-                <ImageCard/>
-                <FloatingCursor/>
-                <Header title={title}/>
-                <main data-scroll-section>
-                    {menuDisplay ? <Menu/> : children }
-                </main>}
-                <Footer/>
+            <ImageCard/>
+            <FloatingCursor/>
+{/*
+            <PageCounter counter={5}/>
+*/}
+            <Header title={title}/>
+            <main data-scroll-section>
+                {menuDisplay ? <Menu/> : children}
+            </main>
+            }
+            <Footer/>
         </div>
     )
 }

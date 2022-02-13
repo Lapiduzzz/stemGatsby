@@ -1,0 +1,31 @@
+.wrapper{
+    position: fixed;
+    bottom: 85px;
+    right: 30px;
+    width: 150px;
+    z-index: 10;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.top{
+    text-align: left;
+    overflow: hidden;
+    height: 18px;
+    width: 100%;
+    margin-left: 10px;
+}
+.bottom{
+    text-align: right;
+    margin-right: 10px;
+}
+
+.inner{
+}
+.inner p{
+    margin: 0;
+}
+.x{
+    margin-right: 10px;
+}
+

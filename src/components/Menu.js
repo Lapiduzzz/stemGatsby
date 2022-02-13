@@ -31,7 +31,7 @@ const Menu = () => {
     }, [])
 
     return (
-        <div className={menu.menu_container} data-scroll ref={menuRef}>
+        <div className={menu.menu_container} ref={menuRef}>
             <div className={menu.menu}>
                 {menuLinks.map(link => (
                     <div className={menu.link_container}>

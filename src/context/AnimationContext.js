@@ -47,8 +47,19 @@ export const AnimationProvider = ({children}) => {
         )
     }
 
+    const pageNav = (target, trigger) => {
+        gsap.to(target, {duration: 1.25, yPercent: -18,
+            scrollTrigger: {
+                trigger: trigger,
+                scroller: scrollContainerRef.current,
+                start: 'top center',
+                end: 'bottom bottom',
+            }
+        })
+    }
+
     return (
-            <AnimationContext.Provider value={{gsapTxt, gsapFade, arrMove}}>
+            <AnimationContext.Provider value={{gsapTxt, gsapFade, arrMove, pageNav}}>
                 {children}
             </AnimationContext.Provider>
     )
