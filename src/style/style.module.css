@@ -194,12 +194,26 @@ p{
         letter-spacing: .25vw;
         line-height: 1;
     }
+
+    .video_container{
+        position: relative;
+        height: 80vh;
+        width: 30vw;
+        overflow: hidden;
+    }
+
+    .spacer{
+        height: 60px;
+    }
+
+
 }
 
 @media all and (min-width: 2000px) {
     .h1, .h2 {
         font-size: 180px !important;
     }
+
 }
 
 

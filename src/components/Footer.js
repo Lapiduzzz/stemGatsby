@@ -71,13 +71,21 @@ const Footer = () => {
                     </p>
                 </div>
             </div>
-            <div className={footer.bottom} ref={bottomRef}>
-                <p>©stemdesign 2022</p>
-                <div className={footer.bottom_center}>
-                    <p>Stem design <span>by</span> nicole cooper</p>
+            {window.innerWidth < 768
+            ? <div className={footer.bottom} ref={bottomRef}>
+                    <div className={footer.bottom_center}>
+                        <p>Stem design <span>by</span> nicole cooper</p>
+                    </div>
                 </div>
-                <p>Website by</p>
-            </div>
+            : <div className={footer.bottom} ref={bottomRef}>
+                    <p>©stemdesign 2022</p>
+                    <div className={footer.bottom_center}>
+                        <p>Stem design <span>by</span> nicole cooper</p>
+                    </div>
+                    <p>Website by</p>
+                </div>
+            }
+
         </section>
     )
 }

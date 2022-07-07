@@ -1,8 +1,9 @@
-.links_container{
+.links_container {
     width: 100%;
     margin: auto;
 }
-.link{
+
+.link {
     position: relative;
     width: 100%;
     display: flex;
@@ -10,16 +11,31 @@
     margin: 0;
     overflow: hidden;
 }
-.link h1{
+
+.link h1 {
     text-align: center;
     margin: 0 0 0 30px;
 }
-.arrow_container{
+
+.arrow_container {
     overflow: hidden;
     width: fit-content;
     margin: 0 0 0 70px;
 }
-.arrow{
+
+.arrow {
     width: auto;
     height: 7vw;
+}
+
+
+@media all and (max-width: 768px) {
+
+    .link h1 {
+        margin: 0 0 0 0px;
+    }
+
+    .arrow_container {
+        margin: 0 0 0 20px;
+    }
 }

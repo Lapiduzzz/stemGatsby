@@ -144,4 +144,33 @@
 
 
 
+@media all and (max-width: 768px) {
 
+    .video_container{
+        height: 80vh;
+        width: 100vw;
+    }
+
+    .text_right{
+        text-align: right;
+    }
+    .carousel_top{
+        font-size: 10px;
+
+    }
+
+    .carouselImg_container{
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+
+    }
+    .carouselImg_container_small{
+        height: 50vh;
+        margin: 100px 0;}
+
+
+    .colophon{
+        height: 50vh;
+    }
+}

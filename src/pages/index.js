@@ -21,7 +21,7 @@ import {useFloatingCursor} from "../context/FloatingCursorContext";
 import {useMenuContext} from "../context/MenuContext";
 
 const IndexPage = ({data}) => {
-    
+
     let frontmatter = data.mdx.frontmatter
     const [hover, setHover] = useState(false)
 
@@ -58,7 +58,6 @@ const IndexPage = ({data}) => {
     const banerRef3 = useRef(null)
     const banerRef4 = useRef(null)
     const banerArrRef = useRef(null)
-
 
 
     const isSectionOver = (cursorData, cursorArrowsDisplay, imageCard) => {
@@ -106,7 +105,7 @@ const IndexPage = ({data}) => {
             homeLinks[3].arrRef.current,
             homeLinks[4].arrRef.current,
             homeLinks[5].arrRef.current,
-        ],LinkSection.current )
+        ], LinkSection.current)
         arrMove(banerArrRef.current, banerRef.current)
     }, [])
 
@@ -123,34 +122,41 @@ const IndexPage = ({data}) => {
             />
             <Spacer/>
             <section className={home.internal_page_links} ref={LinkSection} data-scrol-section
-                     onMouseEnter={e => isSectionOver('Explore',false, true,)}
+                     onMouseEnter={e => isSectionOver('Explore', false, true,)}
                      onMouseLeave={e => isSectionLeave()}
             >
                 <div className={home.links_wrapper}>
                     {homeLinks.map(link => (<Links title={link.title}
-                                               link={link.link}
-                                               fontSize={'10vw'}
-                                               position={link.position}
-                                               linkRef={link.linkRef}
-                                               arrRef={link.arrRef}
-                                               arrowSize={'7vw'}
+                                                   link={link.link}
+                                                   fontSize={'10vw'}
+                                                   position={link.position}
+                                                   linkRef={link.linkRef}
+                                                   arrRef={link.arrRef}
+                                                   arrowSize={'7vw'}
                         />)
                     )}
                 </div>
             </section>
             <Spacer/>
             <section className={home.video_section}>
-                <div className={home.video_wrapper} ref={videoRef}>
-                    <div className={home.video_container}>
-                        <Video videoSrcURL={frontmatter.video}/>
+                {window.innerWidth < 768
+                    ? <div className={home.video_wrapper} ref={videoRef}>
+                        <div className={home.video_container}>
+                            <Video videoSrcURL={frontmatter.video}/>
+                        </div>
                     </div>
-                    <div className={home.video_container}>
-                        <Video videoSrcURL={frontmatter.video}/>
+                    : <div className={home.video_wrapper} ref={videoRef}>
+                        <div className={home.video_container}>
+                            <Video videoSrcURL={frontmatter.video}/>
+                        </div>
+                        <div className={home.video_container}>
+                            <Video videoSrcURL={frontmatter.video}/>
+                        </div>
+                        <div className={home.video_container}>
+                            <Video videoSrcURL={frontmatter.video}/>
+                        </div>
                     </div>
-                    <div className={home.video_container}>
-                        <Video videoSrcURL={frontmatter.video}/>
-                    </div>
-                </div>
+                }
             </section>
             <Spacer/>
             <section className={home.specialising} data-scrol-section ref={section2Ref}>
@@ -177,7 +183,10 @@ const IndexPage = ({data}) => {
                     <p className={home.text_right}>
                         <span>Follow Us</span><br/>
                         <Link to={'https://www.instagram.com/stemdesignflorals'} className={style.link}>
-                            <span>@sweetstemsdesignflorals</span>
+                            {window.innerWidth < 768
+                                ? <span>@designflorals</span>
+                                : <span>@sweetstemsdesignflorals</span>
+                            }
                         </Link>
                     </p>
                 </div>
@@ -186,12 +195,12 @@ const IndexPage = ({data}) => {
                      onMouseLeave={e => isSectionLeave()}>
                     <Swiper
                         className={home.swiper}
-                        spaceBetween={0}
-                        slidesPerView={2}
+                        spaceBetween={window.innerWidth < 768 ? 10 : 0}
+                        slidesPerView={window.innerWidth < 768 ? 1 : 2}
                         grabCursor={true}
                         loop={true}
                         freeMode={true}
-                        freeModeMomentum = {false}
+                        freeModeMomentum={false}
                         centeredSlides={true}
                         onTouchStart={() => {
                             setSwiperHover(true)
@@ -231,26 +240,32 @@ const IndexPage = ({data}) => {
                      onMouseLeave={e => isSectionLeave()}
             >
                 <div className={home.links_wrapper}>
-                        <div className={`${l.link} + ${style.start}`}>
-                            <h1 className={`${style.h1} + ${home.banner_h1}`}
-                                style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', lineHeight: '.85'}}
-                                ref={banerRef1}
-                            >ready to</h1>
-                        </div>
-                        <div className={`${l.link} + ${style.end}`}>
-                            <h1 className={`${style.h1}  + ${home.banner_h1}`}
-                                style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', lineHeight: '.85'}}
-                                ref={banerRef2}
-                            >create your</h1>
-                        </div>
-                        <div className={`${l.link} + ${style.end}`}>
-                            <h1 className={`${style.h1} + ${home.banner_h1}`}
-                                style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', marginBottom: '20px', lineHeight: '.85'}}
-                                ref={banerRef3}
-                            >mood?</h1>
-                        </div>
-                            <Links link={'contact'} title={'let\'s chat'} fontSize={'10vw'} position={style.start}
-                                   linkRef={banerRef4} arrRef={banerArrRef} arrowSize={'7vw'}/>
+                    <div className={`${l.link} + ${style.start}`}>
+                        <h1 className={`${style.h1} + ${home.banner_h1}`}
+                            style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', lineHeight: '.85'}}
+                            ref={banerRef1}
+                        >ready to</h1>
+                    </div>
+                    <div className={`${l.link} + ${style.end}`}>
+                        <h1 className={`${style.h1}  + ${home.banner_h1}`}
+                            style={{fontStyle: 'normal', display: 'flex', marginLeft: '30px', lineHeight: '.85'}}
+                            ref={banerRef2}
+                        >create your</h1>
+                    </div>
+                    <div className={`${l.link} + ${style.end}`}>
+                        <h1 className={`${style.h1} + ${home.banner_h1}`}
+                            style={{
+                                fontStyle: 'normal',
+                                display: 'flex',
+                                marginLeft: '30px',
+                                marginBottom: '20px',
+                                lineHeight: '.85'
+                            }}
+                            ref={banerRef3}
+                        >mood?</h1>
+                    </div>
+                    <Links link={'contact'} title={'let\'s chat'} fontSize={'10vw'} position={style.start}
+                           linkRef={banerRef4} arrRef={banerArrRef} arrowSize={'7vw'}/>
                 </div>
             </section>
             <Spacer/>

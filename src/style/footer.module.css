@@ -74,3 +74,14 @@
     font-style: italic;
     font-weight: 200;
 }
+
+@media all and (max-width: 768px) {
+
+    .bottom{
+        justify-content: center;
+    }
+    .bottom_center{
+        justify-content: center;
+    }
+
+}
