@@ -31,7 +31,7 @@ const Header = ({title}) => {
                 </div>
                 <div className={`${header.booking} + ${header.header_inner_container}`}>
                     <Link to={'/contacts'} className={style.link}>
-                        {window.innerWidth < 768 ? <span>bkng</span> : <span>make a booking</span>}
+                        <span>make a booking</span>
                     </Link>
                 </div>
             </div>

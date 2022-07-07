@@ -74,8 +74,9 @@ const IndexPage = ({data}) => {
             setHover(false)
         }
     }
-
+    let windowSize = 0
     useEffect(() => {
+
 
         gsapTxt(homeLinks[0].linkRef.current, LinkSection.current, 0,)
         gsapTxt(homeLinks[1].linkRef.current, LinkSection.current, 0.1,)
@@ -139,7 +140,7 @@ const IndexPage = ({data}) => {
             </section>
             <Spacer/>
             <section className={home.video_section}>
-                {window.innerWidth < 768
+                {windowSize < 768
                     ? <div className={home.video_wrapper} ref={videoRef}>
                         <div className={home.video_container}>
                             <Video videoSrcURL={frontmatter.video}/>
@@ -183,7 +184,7 @@ const IndexPage = ({data}) => {
                     <p className={home.text_right}>
                         <span>Follow Us</span><br/>
                         <Link to={'https://www.instagram.com/stemdesignflorals'} className={style.link}>
-                            {window.innerWidth < 768
+                            {windowSize < 768
                                 ? <span>@designflorals</span>
                                 : <span>@sweetstemsdesignflorals</span>
                             }
@@ -195,8 +196,8 @@ const IndexPage = ({data}) => {
                      onMouseLeave={e => isSectionLeave()}>
                     <Swiper
                         className={home.swiper}
-                        spaceBetween={window.innerWidth < 768 ? 10 : 0}
-                        slidesPerView={window.innerWidth < 768 ? 1 : 2}
+                        spaceBetween={windowSize < 768 ? 10 : 0}
+                        slidesPerView={windowSize < 768 ? 1 : 2}
                         grabCursor={true}
                         loop={true}
                         freeMode={true}
