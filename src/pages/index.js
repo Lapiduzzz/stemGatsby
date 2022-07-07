@@ -79,6 +79,9 @@ const IndexPage = ({data}) => {
 
         typeof window !== `undefined` ?  windowSize = 1920 : windowSize = window.innerWidth
 
+        window.addEventListener("resize", ()=>{
+            windowSize = window.innerWidth
+        })
         gsapTxt(homeLinks[0].linkRef.current, LinkSection.current, 0,)
         gsapTxt(homeLinks[1].linkRef.current, LinkSection.current, 0.1,)
         gsapTxt(homeLinks[2].linkRef.current, LinkSection.current, 0.2,)
