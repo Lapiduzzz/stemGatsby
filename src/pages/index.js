@@ -77,6 +77,7 @@ const IndexPage = ({data}) => {
     let windowSize = 0
     useEffect(() => {
 
+        typeof window !== `undefined` ?  windowSize = 1920 : windowSize = window.innerWidth
 
         gsapTxt(homeLinks[0].linkRef.current, LinkSection.current, 0,)
         gsapTxt(homeLinks[1].linkRef.current, LinkSection.current, 0.1,)
