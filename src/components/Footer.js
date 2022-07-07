@@ -9,7 +9,7 @@ import {useAnimationContext} from "../context/AnimationContext";
 import {useLocoScrollContext} from "../context/LocomotiveScrollContext";
 import {useMenuContext} from "../context/MenuContext";
 
-const Footer = () => {
+const Footer = ({windowSize}) => {
 
     const {gsapFade} = useAnimationContext()
     const {scrollTop} = useLocoScrollContext()
@@ -71,14 +71,20 @@ const Footer = () => {
                     </p>
                 </div>
             </div>
-           <div className={footer.bottom} ref={bottomRef}>
+            {windowSize < 768
+            ? <div className={footer.bottom} ref={bottomRef}>
+                    <div className={footer.bottom_center}>
+                        <p>Stem design <span>by</span> nicole cooper</p>
+                    </div>
+                </div>
+            : <div className={footer.bottom} ref={bottomRef}>
                     <p>©stemdesign 2022</p>
                     <div className={footer.bottom_center}>
                         <p>Stem design <span>by</span> nicole cooper</p>
                     </div>
                     <p>Website by</p>
                 </div>
-
+            }
 
         </section>
     )

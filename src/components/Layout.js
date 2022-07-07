@@ -12,7 +12,7 @@ import {useMenuContext} from "../context/MenuContext";
 import PageCounter from "./PageCounter";
 
 
-const Layout = ({children, title}) => {
+const Layout = ({children, title, windowSize}) => {
 
     const {ScrollInit, ScrollTrigger} = useLocoScrollContext()
 
@@ -34,12 +34,12 @@ const Layout = ({children, title}) => {
 {/*
             <PageCounter counter={5}/>
 */}
-            <Header title={title}/>
+            <Header title={title} windowSize = {windowSize}/>
             <main data-scroll-section>
                 {menuDisplay ? <Menu/> : children}
             </main>
             }
-            <Footer/>
+            <Footer windowSize = {windowSize}/>
         </div>
     )
 }

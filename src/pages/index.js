@@ -24,6 +24,7 @@ const IndexPage = ({data}) => {
 
     let frontmatter = data.mdx.frontmatter
     const [hover, setHover] = useState(false)
+    const [windowSize, setWindowSize] = useState(0)
 
     const {gsapTxt, gsapFade, arrMove} = useAnimationContext()
     const {setCursorParams, resetCursorParams, setSwiperHover} = useFloatingCursor()
@@ -74,13 +75,12 @@ const IndexPage = ({data}) => {
             setHover(false)
         }
     }
-    let windowSize = 0
     useEffect(() => {
 
-        typeof window !== `undefined` ?  windowSize = 1920 : windowSize = window.innerWidth
+        typeof window === `undefined` ? setWindowSize(0) : setWindowSize(window.innerWidth)
 
-        window.addEventListener("resize", ()=>{
-            windowSize = window.innerWidth
+        window.addEventListener("resize", () => {
+            setWindowSize(window.innerWidth)
         })
         gsapTxt(homeLinks[0].linkRef.current, LinkSection.current, 0,)
         gsapTxt(homeLinks[1].linkRef.current, LinkSection.current, 0.1,)
@@ -115,7 +115,7 @@ const IndexPage = ({data}) => {
     }, [])
 
     return (
-        <Layout title={frontmatter.head}>
+        <Layout title={frontmatter.head} windowSize={windowSize}>
             <Introduction backgroundImg={data.mdx.frontmatter.backgroundImg}
                           alt={frontmatter.backgroundImgAlt}
                           hStr1={'Embrace'}

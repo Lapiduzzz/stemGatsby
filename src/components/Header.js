@@ -5,7 +5,7 @@ import {Link} from "gatsby";
 import {useMenuContext} from "../context/MenuContext";
 import {useLocoScrollContext} from "../context/LocomotiveScrollContext";
 
-const Header = ({title}) => {
+const Header = ({title, windowSize}) => {
 
     const {setMenuDisplay} = useMenuContext()
     const {ScrollInit} = useLocoScrollContext()
@@ -31,7 +31,7 @@ const Header = ({title}) => {
                 </div>
                 <div className={`${header.booking} + ${header.header_inner_container}`}>
                     <Link to={'/contacts'} className={style.link}>
-                        <span>make a booking</span>
+                        {windowSize < 768 ? <span>book</span> : <span>make a booking</span>}
                     </Link>
                 </div>
             </div>
