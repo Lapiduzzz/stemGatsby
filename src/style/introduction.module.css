@@ -30,3 +30,20 @@
 }
 .h2_container{
 }
+
+
+@media screen and (max-width: 768px) {
+    .introduction{
+        height: calc( 100vh + 125px);
+    }
+
+    .text{
+        position: absolute;
+        bottom: 0;
+        max-width: 1920px;
+        text-align: center;
+        left: 0%;
+        transform: translate(-0%);
+        margin: auto auto 30px;
+    }
+}

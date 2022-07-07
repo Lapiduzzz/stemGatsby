@@ -38,6 +38,8 @@
     display: flex;
     justify-content: center;
 }
+
+
 .video_wrapper{
     position: relative;
     max-width: 1800px;
@@ -139,5 +141,7 @@
 .hg{
     height: 100vh;
 }
+
+
 
 
