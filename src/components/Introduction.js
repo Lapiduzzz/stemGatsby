@@ -5,8 +5,6 @@ import {GatsbyImage, getImage} from "gatsby-plugin-image";
 import {useEffect, useRef} from "react";
 import {useAnimationContext} from "../context/AnimationContext";
 
-
-
 const Introduction = ({backgroundImg, alt, bottomText, hStr1, hStr2, hStr3,}) => {
 
     const {gsapTxt, gsapFade} = useAnimationContext()
@@ -18,7 +16,6 @@ const Introduction = ({backgroundImg, alt, bottomText, hStr1, hStr2, hStr3,}) =>
     const hRef2 = useRef()
     const hRef3 = useRef()
     const pRef = useRef()
-
 
     useEffect(()=>{
         gsapTxt(hRef1.current, introRef.current, 0)
@@ -47,7 +44,5 @@ const Introduction = ({backgroundImg, alt, bottomText, hStr1, hStr2, hStr3,}) =>
             </section>
     )
 }
-
-
 
 export default Introduction
