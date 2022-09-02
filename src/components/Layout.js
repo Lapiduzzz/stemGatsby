@@ -17,7 +17,6 @@ const Layout = ({children, title, windowSize}) => {
     const {ScrollInit, ScrollTrigger} = useLocoScrollContext()
 
     const {menuDisplay} = useMenuContext()
-
     useEffect(() => {
         ScrollInit('reset')
         return ScrollInit('init')
@@ -38,7 +37,6 @@ const Layout = ({children, title, windowSize}) => {
             <main data-scroll-section>
                 {menuDisplay ? <Menu/> : children}
             </main>
-            }
             <Footer windowSize = {windowSize}/>
         </div>
     )
