@@ -237,6 +237,7 @@ const IndexPage = ({data}) => {
                 </div>
 
 
+
             </section>
             <Spacer/>
             <section className={home.banner} data-scrol-section
