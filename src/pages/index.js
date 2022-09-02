@@ -239,7 +239,6 @@ const IndexPage = ({data}) => {
 
             </section>
             <Spacer/>
-            <MapYandex/>
             <section className={home.banner} data-scrol-section
                      ref={banerRef}
                      onMouseEnter={e => isSectionOver("Enquire", false, false)}
