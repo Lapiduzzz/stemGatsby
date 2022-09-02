@@ -19,6 +19,7 @@ import {useAnimationContext} from "../context/AnimationContext";
 import {useImageCard} from "../context/ImageCardContext";
 import {useFloatingCursor} from "../context/FloatingCursorContext";
 import {useMenuContext} from "../context/MenuContext";
+import{MapYandex} from "../components/map";
 
 const IndexPage = ({data}) => {
 
@@ -239,6 +240,7 @@ const IndexPage = ({data}) => {
 
             </section>
             <Spacer/>
+            <MapYandex/>
             <section className={home.banner} data-scrol-section
                      ref={banerRef}
                      onMouseEnter={e => isSectionOver("Enquire", false, false)}
